@@ -1,99 +1,95 @@
+# Makefile - makefile for buffer
 #
-# OpenSSL/crypto/buffer/Makefile
+# modification history
+# --------------------
+# 01b, 05nov04,tat     added -DOPENSSL_NO_CAST
+# 01a, 18mar04,cdw     written
 #
+# DESCRIPTION
+# This file contains the makefile rules for building OpenSSL in the
+# Tornado framework 
+#*/
 
-DIR=	buffer
-TOP=	../..
-CC=	cc
-INCLUDES= -I.. -I$(TOP) -I../../include
-CFLAG=-g
-MAKEFILE=	Makefile
-AR=		ar r
+TGT_DIR=$(WIND_BASE)/target
+USR_BUILD=no
 
-CFLAGS= $(INCLUDES) $(CFLAG)
 
-GENERAL=Makefile
-TEST=
-APPS=
+ifeq ($(SPACE),user)
+    USR_BUILD=yes
+endif
 
-LIB=$(TOP)/libcrypto.a
-LIBSRC= buffer.c buf_str.c buf_err.c
-LIBOBJ= buffer.o buf_str.o buf_err.o
+ifeq ($(SPACE),USER)
+    USR_BUILD=yes
+endif
 
-SRC= $(LIBSRC)
 
-EXHEADER= buffer.h
-HEADER=	$(EXHEADER)
+ifeq ($(USR_BUILD),yes)
+    TGT_DIR =$(WIND_USR)
+    MAKE_INCLUDE_PATH=$(WIND_USR)
+else     
+    TGT_DIR =$(WIND_BASE)/target
+    MAKE_INCLUDE_PATH=$(TGT_DIR)/h
+endif 
 
-ALL=    $(GENERAL) $(SRC) $(HEADER)
 
-top:
-	(cd ../..; $(MAKE) DIRS=crypto SDIRS=$(DIR) sub_all)
 
-all:	lib
 
-lib:	$(LIBOBJ)
-	$(AR) $(LIB) $(LIBOBJ)
-	$(RANLIB) $(LIB) || echo Never mind.
-	@touch lib
+BF_ENC =	bf_enc.o
+BN_ASM =	bn_asm.o
+CAST_ENC =	c_enc.o
+COMPATOBJ =	ui_compat.o
+DES_ENC =	des_enc.o fcrypt_b.o
+MD5_ASM_OBJ =
+RC4_ENC =	rc4_enc.o
+RC5_ENC =	rc5_enc.o
+RMD160_ASM_OBJ =
+SHA1_ASM_OBJ =
 
-files:
-	$(PERL) $(TOP)/util/files.pl Makefile >> $(TOP)/MINFO
+BNTEST =	bntest
+ECTEST =	ectest
+EXPTEST =	exptest
+IDEATEST =	ideatest
+SHATEST =	shatest
+SHA1TEST =	sha1test
+MDC2TEST =	mdc2test
+RMDTEST =	rmdtest
+MD2TEST =	md2test
+MD4TEST =	md4test
+MD5TEST =	md5test
+HMACTEST =	hmactest
+RC2TEST =	rc2test
+RC4TEST =	rc4test
+RC5TEST =	rc5test
+BFTEST =	bftest
+CASTTEST =	casttest
+DESTEST =	destest
+RANDTEST =	randtest
+DHTEST =	dhtest
+DSATEST =	dsatest
+METHTEST =	methtest
+SSLTEST =	ssltest
+RSATEST =	rsa_test
+ENGINETEST =	enginetest
+EVPTEST =	evp_test
 
-links:
-	@$(PERL) $(TOP)/util/mklink.pl ../../include/openssl $(EXHEADER)
-	@$(PERL) $(TOP)/util/mklink.pl ../../test $(TEST)
-	@$(PERL) $(TOP)/util/mklink.pl ../../apps $(APPS)
+LIB_BASE_NAME=seclibs
 
-install:
-	@[ -n "$(INSTALLTOP)" ] # should be set by top Makefile...
-	@headerlist="$(EXHEADER)"; for i in $$headerlist ; \
-	do  \
-	(cp $$i $(INSTALL_PREFIX)$(INSTALLTOP)/include/openssl/$$i; \
-	chmod 644 $(INSTALL_PREFIX)$(INSTALLTOP)/include/openssl/$$i ); \
-	done;
+override EXTRA_DEFINE+=-DOPENSSLDIR="\"./\"" -DOPENSSL_SYSNAME_VXWORKS \
+	-DOPENSSL_NO_KRB5 -DOPENSSL_NO_HW -DOPENSSL_NO_CAST -DOPENSSL_NO_CAST5\
+	-DOPENSSL_NO_ASM -DOPENSSL_NO_MDC2 -DOPENSSL_NO_IDEA \
+	-DOPENSSL_NO_ENGINE -DOPENSSL_NO_RC5 -DOPENSSL_NO_RC2 \
+        -DOPENSSL_NO_BF -DOPENSSL_NO_SPEED -DNO_STRINGS_H \
+        -DOPENSSL_NO_DESX -DOPENSSL_NO_EC \
+	 $(DEBUG_FLAG) -I$(TGT_DIR)/h/openssl \
+	-I. -I.. -I../.. -I$(TGT_DIR)/src/security/utilities/misc \
+	-I$(TGT_DIR)/h/openssl/private 
 
-tags:
-	ctags $(SRC)
+SUBDIRS = 
 
-tests:
+OBJS = 	sec_lib_buffer.o buf_err.o
 
-lint:
-	lint -DLINT $(INCLUDES) $(SRC)>fluff
 
-update: depend
 
-depend:
-	@[ -n "$(MAKEDEPEND)" ] # should be set by upper Makefile...
-	$(MAKEDEPEND) -- $(CFLAG) $(INCLUDES) $(DEPFLAG) -- $(PROGS) $(LIBSRC)
+#include $(TGT_DIR)/h/make/rules.library
+include $(MAKE_INCLUDE_PATH)/make/rules.library
 
-dclean:
-	$(PERL) -pe 'if (/^# DO NOT DELETE THIS LINE/) {print; exit(0);}' $(MAKEFILE) >Makefile.new
-	mv -f Makefile.new $(MAKEFILE)
-
-clean:
-	rm -f *.o *.obj lib tags core .pure .nfs* *.old *.bak fluff
-
-# DO NOT DELETE THIS LINE -- make depend depends on it.
-
-buf_err.o: ../../include/openssl/bio.h ../../include/openssl/buffer.h
-buf_err.o: ../../include/openssl/crypto.h ../../include/openssl/e_os2.h
-buf_err.o: ../../include/openssl/err.h ../../include/openssl/lhash.h
-buf_err.o: ../../include/openssl/opensslconf.h ../../include/openssl/opensslv.h
-buf_err.o: ../../include/openssl/ossl_typ.h ../../include/openssl/safestack.h
-buf_err.o: ../../include/openssl/stack.h ../../include/openssl/symhacks.h
-buf_err.o: buf_err.c
-buf_str.o: ../../e_os.h ../../include/openssl/bio.h
-buf_str.o: ../../include/openssl/buffer.h ../../include/openssl/crypto.h
-buf_str.o: ../../include/openssl/e_os2.h ../../include/openssl/err.h
-buf_str.o: ../../include/openssl/lhash.h ../../include/openssl/opensslconf.h
-buf_str.o: ../../include/openssl/opensslv.h ../../include/openssl/ossl_typ.h
-buf_str.o: ../../include/openssl/safestack.h ../../include/openssl/stack.h
-buf_str.o: ../../include/openssl/symhacks.h ../cryptlib.h buf_str.c
-buffer.o: ../../e_os.h ../../include/openssl/bio.h
-buffer.o: ../../include/openssl/buffer.h ../../include/openssl/crypto.h
-buffer.o: ../../include/openssl/e_os2.h ../../include/openssl/err.h
-buffer.o: ../../include/openssl/lhash.h ../../include/openssl/opensslconf.h
-buffer.o: ../../include/openssl/opensslv.h ../../include/openssl/ossl_typ.h
-buffer.o: ../../include/openssl/safestack.h ../../include/openssl/stack.h
-buffer.o: ../../include/openssl/symhacks.h ../cryptlib.h buffer.c
