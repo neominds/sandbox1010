@@ -1,0 +1,4573 @@
+﻿<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "DTD/xhtml1-strict.dtd">
+<html xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mg="http://www.araxis.com/2002/Merge/Reporting" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+<!--The layout and design of this report is Copyright © 2003-2009 Araxis Ltd. All rights reserved.-->
+<!--The copyright of the data content of this report belongs to the relevant copyright holders.-->
+<title>46. Araxis Merge File Comparison Report</title>
+<style type="text/css">
+body { background: #fff;  color: #000; margin: 0px 14px 14px 14px; }
+h1, h2, h3, h4, h5 {
+	padding: 0em;
+	margin: 1.5em 0em .25em 0em;
+	text-align: left;
+	font-weight: normal;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 70%;
+	max-width: 55em;
+}
+body, h4, h5, p, ol, ul, li, td, th { font-family: Verdana, Arial, Helvetica, sans-serif; text-align: left; }
+
+h4, h5, p, ol, ul, li { font-size: 70%; }
+input {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 120%;
+}
+
+h1 { margin: 14px 0em 1.2em 0em; font-size: 112%; line-height: 130%;}
+h2 { font-size: 125%; line-height: 84%;}
+h3 { margin-top: 1.4em; font-size: 81%; }
+h4 { margin-top: 1em; font-size: 70%; }
+h5 { margin-top: 1em; font-size: 100%; font-style: italic;}
+h1 strong, h2 strong, h3 strong, h4 strong { font-weight: bold; }
+
+p { margin: 6px 0em 6px 0em; max-width: 55em;}
+p.code, code {}
+p { font-size: 70%; line-height: 125%; }
+table { font-size: 70%;}
+
+p.copyright, .small { font-size: 60%; line-height: 120%; }
+p.copyright { margin: 3px 0px 0px 0px; padding: 0px; text-align: left; }
+acronym { font-variant: small-caps; }
+div.pad { padding: 3px; }
+span.lineEndings { color: red; font-size: 70%; }
+
+table.mgRowGroup, table.mgRowGroupFolder { border: 1px solid #a0a0a0; margin: 10px 0px 10px 0px; width: 100%; table-layout: fixed; border-collapse: collapse; }
+table.mgRowGroup td { vertical-align: top; padding: 0; }
+table.mgRowGroupFolder td { vertical-align: top; padding: 1px 0 1px 0; }
+div.IP { width: 2px; height: 1em; float: left; }
+
+img.mgFldrIcon {float: left; text-align: left; margin: -1px 2px 0px 0px;  height: 16px; width: 16px; border: none; vertical-align: top; background-color: transparent;}
+div.mgFldrIcon {float: left; width: auto;}
+span.left {float: left;width: auto;}
+span.right {float: right;width: auto;}
+
+table.bordered { border-collapse: collapse; border: 1px solid #a0a0a0; margin: 10px 0px 10px 0px;}
+table.bordered th, table.bordered td { vertical-align: top; padding: 3px; border: 1px solid #a0a0a0;}
+table.bordered th { background-color: #e5e5e5; }
+table.bordered td.group { background-color: #f5f5f5; }
+span.disabledNavigation { color: #a0a0a0; }
+div.navigation { margin-top: 14px; font-size: 70%; }
+div.comment { font-weight: normal; color: #000; font-family: Verdana, Arial, Helvetica, sans-serif; background-color: #fcfed8; padding: 2px 5px 2px 5px; border: 1px solid #E3E5C3; margin: 1px 2px 3px 2px; -moz-border-radius: 7px; border-radius: 7px; }
+
+                span.U1, span.U1 a {float: left; width: auto;color: #000000; background-color: #FFFFFF; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+span.U1 a {text-decoration: underline;}
+td.U1 {color: #000000; background-color: #FFFFFF; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+span.R1, span.R1 a {float: left; width: auto;color: #800000; background-color: #F3E6D8; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+span.R1 a {text-decoration: underline;}
+td.R1 {color: #800000; background-color: #F3E6D8; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+span.I1, span.I1 a {float: left; width: auto;color: #800000; background-color: #D1E8CF; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+span.I1 a {text-decoration: underline;}
+td.I1 {color: #800000; background-color: #D1E8CF; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+span.C1, span.C1 a {float: left; width: auto;color: #800000; background-color: #DACDE6; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+span.C1 a {text-decoration: underline;}
+td.C1 {color: #800000; background-color: #DACDE6; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+td.nbgC1 {color: #800000; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; background-color: #FFFFFF; }
+span.U2, span.U2 a {float: left; width: auto;color: #000000; background-color: #FFFFFF; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+span.U2 a {text-decoration: underline;}
+td.U2 {color: #000000; background-color: #FFFFFF; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+span.R2, span.R2 a {float: left; width: auto;color: #800000; background-color: #F3E6D8; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+span.R2 a {text-decoration: underline;}
+td.R2 {color: #800000; background-color: #F3E6D8; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+span.I2, span.I2 a {float: left; width: auto;color: #800000; background-color: #D1E8CF; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+span.I2 a {text-decoration: underline;}
+td.I2 {color: #800000; background-color: #D1E8CF; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+span.C2, span.C2 a {float: left; width: auto;color: #800000; background-color: #DACDE6; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+span.C2 a {text-decoration: underline;}
+td.C2 {color: #800000; background-color: #DACDE6; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+td.nbgC2 {color: #800000; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; background-color: #FFFFFF; }
+
+span.selected {background-color: #3d80df; color: #fff;}
+span.selected a {background-color: #3d80df; color: #fff; text-decoration: underline;}
+span.symbol {cursor: pointer;}
+			</style>
+</head>
+<body>
+<h1><strong>46. Araxis Merge File Comparison Report</strong></h1>
+<p>Produced by <strong>Araxis Merge</strong> on <strong>Mon Jul 13 06:37:11 2015 UTC</strong>. See <a href="http://www.araxis.com/" title="Link to the Araxis corporate web site">www.araxis.com</a> for information about Merge. This report uses XHTML and CSS2, and is best viewed with a reasonably standards compliant browser such as the latest version of <a href="http://www.mozilla.org/products/firefox/" title="Link to the Firefox page on the Mozilla website">Firefox</a> or <a href="http://www.microsoft.com/ie/" title="Link to the Microsoft website">Internet Explorer</a>. For optimum results when printing this report, use landscape orientation and enable printing of background images and colours in your browser.</p>
+<h3><strong>46.1&nbsp;Files compared</strong></h3>
+<table class="bordered">
+<tr>
+<th>#</th>
+<th>Location</th>
+<th>File</th>
+<th>Last Modified</th>
+</tr>
+<tr>
+<td>1</td>
+<td>C:\Users\neominds\Desktop\work\OpenSSL_1.0.1\openssl-1.0.1o_WR_DIR_STRUCTURE\target\h\openssl</td>
+<td>opensslconf.h</td>
+<td>Fri Jun 12 15:21:00 2015 UTC</td>
+</tr>
+<tr>
+<td>2</td>
+<td>C:\Users\neominds\Desktop\work\WR_SSL_VxWorks62\target\h\openssl</td>
+<td>opensslconf.h</td>
+<td>Thu Sep 29 06:43:17 2005 UTC</td>
+</tr>
+</table>
+<h3><strong>46.2&nbsp;Comparison summary</strong></h3>
+<table class="bordered">
+<tr>
+<th rowspan="2" style="vertical-align: bottom;">Description</th>
+<th colspan="2">Between<br />Files 1 and 2</th>
+</tr>
+<tr>
+<th style="text-align: right;">Text Blocks</th>
+<th style="text-align: right;">Lines</th>
+</tr>
+<tr>
+<td>Unchanged</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">388</td>
+</tr>
+<tr>
+<td>Changed</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">73</td>
+</tr>
+<tr>
+<td>Inserted</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">8</td>
+</tr>
+<tr>
+<td>Removed</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">13</td>
+</tr>
+</table>
+<h3><strong>46.3&nbsp;Comparison options</strong></h3>
+<table class="bordered" style="width: 55em;">
+<tr>
+<th>Whitespace</th>
+<td></td>
+</tr>
+<tr>
+<th>Character case</th>
+<td>Differences in character case are significant</td>
+</tr>
+<tr>
+<th>Line endings</th>
+<td>Differences in line endings (<code>CR</code> and <code>LF</code> characters) are ignored</td>
+</tr>
+<tr>
+<th>CR/LF characters</th>
+<td>Not shown in the comparison detail</td>
+</tr>
+</table>
+<h3><strong>46.4&nbsp;Active regular expressions</strong></h3>
+<p>No regular expressions were active.</p>
+<h3><strong>46.5&nbsp;Comparison detail</strong></h3>
+<table class="mgRowGroup">
+<col style="width: 5em;" />
+<col style="width: 1em;" />
+<col width="*" />
+<col style="width: 1em;" />
+<col style="width: 5em;" />
+<col style="width: 1em;" />
+<col width="*" />
+<tr>
+<td class="U1" style="text-align: right;">1</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">/*&nbsp;openssl</span>
+<span class="U1">conf.h&nbsp;*/</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">1</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">/*&nbsp;openssl</span>
+<span class="U2">conf.h&nbsp;*/</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">2</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">/*&nbsp;WARNING</span>
+<span class="U1">:&nbsp;Generate</span>
+<span class="U1">d&nbsp;automati</span>
+<span class="U1">cally&nbsp;from</span>
+<span class="U1">&nbsp;opensslco</span>
+<span class="U1">nf.h.in&nbsp;by</span>
+<span class="U1">&nbsp;Configure</span>
+<span class="U1">.&nbsp;*/</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">2</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">/*&nbsp;WARNING</span>
+<span class="U2">:&nbsp;Generate</span>
+<span class="U2">d&nbsp;automati</span>
+<span class="U2">cally&nbsp;from</span>
+<span class="U2">&nbsp;opensslco</span>
+<span class="U2">nf.h.in&nbsp;by</span>
+<span class="U2">&nbsp;Configure</span>
+<span class="U2">.&nbsp;*/</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">3</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1" />
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">3</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2" />
+</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">4</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">#ifdef&nbsp;&nbsp;__</span>
+<span class="R1">cplusplus</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">5</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">extern&nbsp;"C"</span>
+<span class="R1">&nbsp;{</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">6</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">#endif</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">7</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">/*&nbsp;OpenSSL</span>
+<span class="U1">&nbsp;was&nbsp;confi</span>
+<span class="U1">gured&nbsp;with</span>
+<span class="U1">&nbsp;the&nbsp;follo</span>
+<span class="U1">wing&nbsp;optio</span>
+<span class="U1">ns:&nbsp;*/</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">4</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">/*&nbsp;OpenSSL</span>
+<span class="U2">&nbsp;was&nbsp;confi</span>
+<span class="U2">gured&nbsp;with</span>
+<span class="U2">&nbsp;the&nbsp;follo</span>
+<span class="U2">wing&nbsp;optio</span>
+<span class="U2">ns:&nbsp;*/</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">5</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">#ifndef&nbsp;OP</span>
+<span class="I2">ENSSL_SYSN</span>
+<span class="I2">AME_VXWORK</span>
+<span class="I2">S</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">6</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">#&nbsp;define&nbsp;O</span>
+<span class="I2">PENSSL_SYS</span>
+<span class="I2">NAME_VXWOR</span>
+<span class="I2">KS</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">7</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">#endif</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">8</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#ifndef&nbsp;OP</span>
+<span class="U1">ENSSL_DOIN</span>
+<span class="U1">G_MAKEDEPE</span>
+<span class="U1">ND</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">8</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#ifndef&nbsp;OP</span>
+<span class="U2">ENSSL_DOIN</span>
+<span class="U2">G_MAKEDEPE</span>
+<span class="U2">ND</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">9</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1" />
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">9</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2" />
+</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">10</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">11</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">#ifndef&nbsp;OP</span>
+<span class="R1">ENSSL_NO_E</span>
+<span class="R1">C_NISTP_64</span>
+<span class="R1">_GCC_128</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">12</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">#&nbsp;define&nbsp;O</span>
+<span class="R1">PENSSL_NO_</span>
+<span class="R1">EC_NISTP_6</span>
+<span class="R1">4_GCC_128</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">13</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">#endif</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">14</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#ifndef&nbsp;OP</span>
+<span class="U1">ENSSL_NO_G</span>
+<span class="U1">MP</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">10</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#ifndef&nbsp;OP</span>
+<span class="U2">ENSSL_NO_G</span>
+<span class="U2">MP</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">15</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#&nbsp;define&nbsp;O</span>
+<span class="U1">PENSSL_NO_</span>
+<span class="U1">GMP</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">11</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#&nbsp;define&nbsp;O</span>
+<span class="U2">PENSSL_NO_</span>
+<span class="U2">GMP</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">16</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#endif</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">12</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#endif</span>
+</td>
+</tr>
+<tr>
+<td class="C1" style="text-align: right;">17</td>
+<td class="C1" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC1">
+<span class="C1">#ifndef&nbsp;OP</span>
+<span class="C1">ENSSL_NO_J</span>
+<span class="C1">PAKE</span>
+</td>
+<td>&nbsp;</td>
+<td class="C2" style="text-align: right;">13</td>
+<td class="C2" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC2">
+<span class="C2">#ifndef&nbsp;OP</span>
+<span class="C2">ENSSL_NO_M</span>
+<span class="C2">DC5</span>
+</td>
+</tr>
+<tr>
+<td class="C1" style="text-align: right;">18</td>
+<td class="C1" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC1">
+<span class="C1">#&nbsp;define&nbsp;O</span>
+<span class="C1">PENSSL_NO_</span>
+<span class="C1">JPAKE</span>
+</td>
+<td>&nbsp;</td>
+<td class="C2" style="text-align: right;">14</td>
+<td class="C2" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC2">
+<span class="C2">#&nbsp;define&nbsp;O</span>
+<span class="C2">PENSSL_NO_</span>
+<span class="C2">MDC5</span>
+</td>
+</tr>
+<tr>
+<td class="C1" style="text-align: right;">19</td>
+<td class="C1" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC1">
+<span class="C1">#endif</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="C1" style="text-align: right;">20</td>
+<td class="C1" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC1">
+<span class="C1">#ifndef&nbsp;OP</span>
+<span class="C1">ENSSL_NO_K</span>
+<span class="C1">RB5</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="C1" style="text-align: right;">21</td>
+<td class="C1" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC1">
+<span class="C1">#&nbsp;define&nbsp;O</span>
+<span class="C1">PENSSL_NO_</span>
+<span class="C1">KRB5</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">22</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#endif</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">15</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#endif</span>
+</td>
+</tr>
+<tr>
+<td class="C1" style="text-align: right;">23</td>
+<td class="C1" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC1">
+<span class="C1">#ifndef&nbsp;OP</span>
+<span class="C1">ENSSL_NO_M</span>
+<span class="C1">D2</span>
+</td>
+<td>&nbsp;</td>
+<td class="C2" style="text-align: right;">16</td>
+<td class="C2" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC2">
+<span class="C2">#ifndef&nbsp;OP</span>
+<span class="C2">ENSSL_NO_I</span>
+<span class="C2">DEA</span>
+</td>
+</tr>
+<tr>
+<td class="C1" style="text-align: right;">24</td>
+<td class="C1" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC1">
+<span class="C1">#&nbsp;define&nbsp;O</span>
+<span class="C1">PENSSL_NO_</span>
+<span class="C1">MD2</span>
+</td>
+<td>&nbsp;</td>
+<td class="C2" style="text-align: right;">17</td>
+<td class="C2" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC2">
+<span class="C2">#&nbsp;define&nbsp;O</span>
+<span class="C2">PENSSL_NO_</span>
+<span class="C2">IDEA</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">25</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#endif</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">18</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#endif</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">26</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#ifndef&nbsp;OP</span>
+<span class="U1">ENSSL_NO_R</span>
+<span class="U1">C5</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">19</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#ifndef&nbsp;OP</span>
+<span class="U2">ENSSL_NO_R</span>
+<span class="U2">C5</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">27</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#&nbsp;define&nbsp;O</span>
+<span class="U1">PENSSL_NO_</span>
+<span class="U1">RC5</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">20</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#&nbsp;define&nbsp;O</span>
+<span class="U2">PENSSL_NO_</span>
+<span class="U2">RC5</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">28</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#endif</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">21</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#endif</span>
+</td>
+</tr>
+<tr>
+<td class="C1" style="text-align: right;">29</td>
+<td class="C1" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC1">
+<span class="C1">#ifndef&nbsp;OP</span>
+<span class="C1">ENSSL_NO_R</span>
+<span class="C1">FC3779</span>
+</td>
+<td>&nbsp;</td>
+<td class="C2" style="text-align: right;">22</td>
+<td class="C2" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC2">
+<span class="C2">#ifndef&nbsp;OP</span>
+<span class="C2">ENSSL_NO_K</span>
+<span class="C2">RB5</span>
+</td>
+</tr>
+<tr>
+<td class="C1" style="text-align: right;">30</td>
+<td class="C1" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC1">
+<span class="C1">#&nbsp;define&nbsp;O</span>
+<span class="C1">PENSSL_NO_</span>
+<span class="C1">RFC3779</span>
+</td>
+<td>&nbsp;</td>
+<td class="C2" style="text-align: right;">23</td>
+<td class="C2" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC2">
+<span class="C2">#&nbsp;define&nbsp;O</span>
+<span class="C2">PENSSL_NO_</span>
+<span class="C2">KRB5</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="C2" style="text-align: right;">24</td>
+<td class="C2" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC2">
+<span class="C2">#endif</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="C2" style="text-align: right;">25</td>
+<td class="C2" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC2">
+<span class="C2">#ifndef&nbsp;OP</span>
+<span class="C2">ENSSL_NO_M</span>
+<span class="C2">DC2</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="C2" style="text-align: right;">26</td>
+<td class="C2" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC2">
+<span class="C2">#&nbsp;define&nbsp;O</span>
+<span class="C2">PENSSL_NO_</span>
+<span class="C2">MDC2</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">31</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#endif</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">27</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#endif</span>
+</td>
+</tr>
+<tr>
+<td class="C1" style="text-align: right;">32</td>
+<td class="C1" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC1">
+<span class="C1">#ifndef&nbsp;OP</span>
+<span class="C1">ENSSL_NO_S</span>
+<span class="C1">CTP</span>
+</td>
+<td>&nbsp;</td>
+<td class="C2" style="text-align: right;">28</td>
+<td class="C2" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC2">
+<span class="C2">#ifndef&nbsp;OP</span>
+<span class="C2">ENSSL_NO_C</span>
+<span class="C2">AST</span>
+</td>
+</tr>
+<tr>
+<td class="C1" style="text-align: right;">33</td>
+<td class="C1" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC1">
+<span class="C1">#&nbsp;define&nbsp;O</span>
+<span class="C1">PENSSL_NO_</span>
+<span class="C1">SCTP</span>
+</td>
+<td>&nbsp;</td>
+<td class="C2" style="text-align: right;">29</td>
+<td class="C2" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC2">
+<span class="C2">#&nbsp;&nbsp;define&nbsp;</span>
+<span class="C2">OPENSSL_NO</span>
+<span class="C2">_CAST</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">34</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#endif</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">30</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#endif</span>
+</td>
+</tr>
+<tr>
+<td class="C1" style="text-align: right;">35</td>
+<td class="C1" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC1">
+<span class="C1">#ifndef&nbsp;OP</span>
+<span class="C1">ENSSL_NO_S</span>
+<span class="C1">TORE</span>
+</td>
+<td>&nbsp;</td>
+<td class="C2" style="text-align: right;">31</td>
+<td class="C2" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC2">
+<span class="C2">#ifndef&nbsp;OP</span>
+<span class="C2">ENSSL_NO_E</span>
+<span class="C2">C</span>
+</td>
+</tr>
+<tr>
+<td class="C1" style="text-align: right;">36</td>
+<td class="C1" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC1">
+<span class="C1">#&nbsp;define&nbsp;O</span>
+<span class="C1">PENSSL_NO_</span>
+<span class="C1">STORE</span>
+</td>
+<td>&nbsp;</td>
+<td class="C2" style="text-align: right;">32</td>
+<td class="C2" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC2">
+<span class="C2">#&nbsp;&nbsp;define&nbsp;</span>
+<span class="C2">OPENSSL_NO</span>
+<span class="C2">_EC</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">37</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#endif</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">33</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#endif</span>
+</td>
+</tr>
+<tr>
+<td class="C1" style="text-align: right;">38</td>
+<td class="C1" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC1">
+<span class="C1">#ifndef&nbsp;OP</span>
+<span class="C1">ENSSL_NO_U</span>
+<span class="C1">NIT_TEST</span>
+</td>
+<td>&nbsp;</td>
+<td class="C2" style="text-align: right;">34</td>
+<td class="C2" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC2">
+<span class="C2">#ifndef&nbsp;OP</span>
+<span class="C2">ENSSL_NO_E</span>
+<span class="C2">CDSA</span>
+</td>
+</tr>
+<tr>
+<td class="C1" style="text-align: right;">39</td>
+<td class="C1" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC1">
+<span class="C1">#&nbsp;define&nbsp;O</span>
+<span class="C1">PENSSL_NO_</span>
+<span class="C1">UNIT_TEST</span>
+</td>
+<td>&nbsp;</td>
+<td class="C2" style="text-align: right;">35</td>
+<td class="C2" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC2">
+<span class="C2">#&nbsp;&nbsp;define&nbsp;</span>
+<span class="C2">OPENSSL_NO</span>
+<span class="C2">_ECDSA</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="C2" style="text-align: right;">36</td>
+<td class="C2" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC2">
+<span class="C2">#endif</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="C2" style="text-align: right;">37</td>
+<td class="C2" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC2">
+<span class="C2">#ifndef&nbsp;OP</span>
+<span class="C2">ENSSL_NO_E</span>
+<span class="C2">CDH</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="C2" style="text-align: right;">38</td>
+<td class="C2" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC2">
+<span class="C2">#&nbsp;&nbsp;define&nbsp;</span>
+<span class="C2">OPENSSL_NO</span>
+<span class="C2">_ECDH</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">40</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#endif</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">39</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#endif</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">41</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1" />
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">40</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2" />
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">42</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#endif&nbsp;/*&nbsp;</span>
+<span class="U1">OPENSSL_DO</span>
+<span class="U1">ING_MAKEDE</span>
+<span class="U1">PEND&nbsp;*/</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">41</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#endif&nbsp;/*&nbsp;</span>
+<span class="U2">OPENSSL_DO</span>
+<span class="U2">ING_MAKEDE</span>
+<span class="U2">PEND&nbsp;*/</span>
+</td>
+</tr>
+<tr>
+<td class="C1" style="text-align: right;">43</td>
+<td class="C1" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC1">
+<span class="C1" />
+</td>
+<td>&nbsp;</td>
+<td class="C2" style="text-align: right;">42</td>
+<td class="C2" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC2">
+<span class="C2">#ifndef&nbsp;OP</span>
+<span class="C2">ENSSL_NO_H</span>
+<span class="C2">W</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="C2" style="text-align: right;">43</td>
+<td class="C2" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC2">
+<span class="C2">#&nbsp;define&nbsp;O</span>
+<span class="C2">PENSSL_NO_</span>
+<span class="C2">HW</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="C2" style="text-align: right;">44</td>
+<td class="C2" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC2">
+<span class="C2">#endif</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="C2" style="text-align: right;">45</td>
+<td class="C2" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC2">
+<span class="C2">#ifndef&nbsp;OP</span>
+<span class="C2">ENSSL_NO_A</span>
+<span class="C2">SM</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="C2" style="text-align: right;">46</td>
+<td class="C2" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC2">
+<span class="C2">#&nbsp;define&nbsp;O</span>
+<span class="C2">PENSSL_NO_</span>
+<span class="C2">ASM</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="C2" style="text-align: right;">47</td>
+<td class="C2" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC2">
+<span class="C2">#endif</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="C2" style="text-align: right;">48</td>
+<td class="C2" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC2">
+<span class="C2">#ifndef&nbsp;OP</span>
+<span class="C2">ENSSL_NO_E</span>
+<span class="C2">NGINE</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="C2" style="text-align: right;">49</td>
+<td class="C2" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC2">
+<span class="C2">#&nbsp;define&nbsp;O</span>
+<span class="C2">PENSSL_NO_</span>
+<span class="C2">ENGINE</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="C2" style="text-align: right;">50</td>
+<td class="C2" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC2">
+<span class="C2">#endif</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">44</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#ifndef&nbsp;OP</span>
+<span class="U1">ENSSL_NO_D</span>
+<span class="U1">YNAMIC_ENG</span>
+<span class="U1">INE</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">51</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#ifndef&nbsp;OP</span>
+<span class="U2">ENSSL_NO_D</span>
+<span class="U2">YNAMIC_ENG</span>
+<span class="U2">INE</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">45</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#&nbsp;define&nbsp;O</span>
+<span class="U1">PENSSL_NO_</span>
+<span class="U1">DYNAMIC_EN</span>
+<span class="U1">GINE</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">52</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#&nbsp;define&nbsp;O</span>
+<span class="U2">PENSSL_NO_</span>
+<span class="U2">DYNAMIC_EN</span>
+<span class="U2">GINE</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">46</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#endif</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">53</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#endif</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">47</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1" />
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">54</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2" />
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">48</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">/*&nbsp;The&nbsp;OPE</span>
+<span class="U1">NSSL_NO_*&nbsp;</span>
+<span class="U1">macros&nbsp;are</span>
+<span class="U1">&nbsp;also&nbsp;defi</span>
+<span class="U1">ned&nbsp;as&nbsp;NO_</span>
+<span class="U1">*&nbsp;if&nbsp;the&nbsp;a</span>
+<span class="U1">pplication</span>
+<span class="U1" />
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">55</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">/*&nbsp;The&nbsp;OPE</span>
+<span class="U2">NSSL_NO_*&nbsp;</span>
+<span class="U2">macros&nbsp;are</span>
+<span class="U2">&nbsp;also&nbsp;defi</span>
+<span class="U2">ned&nbsp;as&nbsp;NO_</span>
+<span class="U2">*&nbsp;if&nbsp;the&nbsp;a</span>
+<span class="U2">pplication</span>
+<span class="U2" />
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">49</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;&nbsp;&nbsp;asks&nbsp;fo</span>
+<span class="U1">r&nbsp;it.&nbsp;&nbsp;Thi</span>
+<span class="U1">s&nbsp;is&nbsp;a&nbsp;tra</span>
+<span class="U1">nsient&nbsp;fea</span>
+<span class="U1">ture&nbsp;that&nbsp;</span>
+<span class="U1">is&nbsp;provide</span>
+<span class="U1">d&nbsp;for&nbsp;thos</span>
+<span class="U1">e</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">56</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;&nbsp;&nbsp;asks&nbsp;fo</span>
+<span class="U2">r&nbsp;it.&nbsp;&nbsp;Thi</span>
+<span class="U2">s&nbsp;is&nbsp;a&nbsp;tra</span>
+<span class="U2">nsient&nbsp;fea</span>
+<span class="U2">ture&nbsp;that&nbsp;</span>
+<span class="U2">is&nbsp;provide</span>
+<span class="U2">d&nbsp;for&nbsp;thos</span>
+<span class="U2">e</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">50</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;&nbsp;&nbsp;who&nbsp;hav</span>
+<span class="U1">en't&nbsp;had&nbsp;t</span>
+<span class="U1">he&nbsp;time&nbsp;to</span>
+<span class="U1">&nbsp;do&nbsp;the&nbsp;ap</span>
+<span class="U1">propriate&nbsp;</span>
+<span class="U1">changes&nbsp;in</span>
+<span class="U1">&nbsp;their</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">57</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;&nbsp;&nbsp;who&nbsp;hav</span>
+<span class="U2">en't&nbsp;had&nbsp;t</span>
+<span class="U2">he&nbsp;time&nbsp;to</span>
+<span class="U2">&nbsp;do&nbsp;the&nbsp;ap</span>
+<span class="U2">propriate&nbsp;</span>
+<span class="U2">changes&nbsp;in</span>
+<span class="U2">&nbsp;their</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">51</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;&nbsp;&nbsp;applica</span>
+<span class="U1">tions.&nbsp;&nbsp;*/</span>
+<span class="U1" />
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">58</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;&nbsp;&nbsp;applica</span>
+<span class="U2">tions.&nbsp;&nbsp;*/</span>
+<span class="U2" />
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">52</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#ifdef&nbsp;OPE</span>
+<span class="U1">NSSL_ALGOR</span>
+<span class="U1">ITHM_DEFIN</span>
+<span class="U1">ES</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">59</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#ifdef&nbsp;OPE</span>
+<span class="U2">NSSL_ALGOR</span>
+<span class="U2">ITHM_DEFIN</span>
+<span class="U2">ES</span>
+</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">53</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">#&nbsp;if&nbsp;defin</span>
+<span class="R1">ed(OPENSSL</span>
+<span class="R1">_NO_EC_NIS</span>
+<span class="R1">TP_64_GCC_</span>
+<span class="R1">128)&nbsp;&amp;&amp;&nbsp;!d</span>
+<span class="R1">efined(NO_</span>
+<span class="R1">EC_NISTP_6</span>
+<span class="R1">4_GCC_128)</span>
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">54</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">#&nbsp;&nbsp;define&nbsp;</span>
+<span class="R1">NO_EC_NIST</span>
+<span class="R1">P_64_GCC_1</span>
+<span class="R1">28</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">55</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">#&nbsp;endif</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">56</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#&nbsp;if&nbsp;defin</span>
+<span class="U1">ed(OPENSSL</span>
+<span class="U1">_NO_GMP)&nbsp;&amp;</span>
+<span class="U1">&amp;&nbsp;!defined</span>
+<span class="U1">(NO_GMP)</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">60</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#&nbsp;if&nbsp;defin</span>
+<span class="U2">ed(OPENSSL</span>
+<span class="U2">_NO_GMP)&nbsp;&amp;</span>
+<span class="U2">&amp;&nbsp;!defined</span>
+<span class="U2">(NO_GMP)</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">57</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#&nbsp;&nbsp;define&nbsp;</span>
+<span class="U1">NO_GMP</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">61</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#&nbsp;&nbsp;define&nbsp;</span>
+<span class="U2">NO_GMP</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">58</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#&nbsp;endif</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">62</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#&nbsp;endif</span>
+</td>
+</tr>
+<tr>
+<td class="C1" style="text-align: right;">59</td>
+<td class="C1" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC1">
+<span class="C1">#&nbsp;if&nbsp;defin</span>
+<span class="C1">ed(OPENSSL</span>
+<span class="C1">_NO_JPAKE)</span>
+<span class="C1">&nbsp;&amp;&amp;&nbsp;!defin</span>
+<span class="C1">ed(NO_JPAK</span>
+<span class="C1">E)</span>
+</td>
+<td>&nbsp;</td>
+<td class="C2" style="text-align: right;">63</td>
+<td class="C2" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC2">
+<span class="C2">#&nbsp;if&nbsp;defin</span>
+<span class="C2">ed(OPENSSL</span>
+<span class="C2">_NO_MDC5)&nbsp;</span>
+<span class="C2">&amp;&amp;&nbsp;!define</span>
+<span class="C2">d(NO_MDC5)</span>
+<span class="C2" />
+</td>
+</tr>
+<tr>
+<td class="C1" style="text-align: right;">60</td>
+<td class="C1" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC1">
+<span class="C1">#&nbsp;&nbsp;define&nbsp;</span>
+<span class="C1">NO_JPAKE</span>
+</td>
+<td>&nbsp;</td>
+<td class="C2" style="text-align: right;">64</td>
+<td class="C2" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC2">
+<span class="C2">#&nbsp;&nbsp;define&nbsp;</span>
+<span class="C2">NO_MDC5</span>
+</td>
+</tr>
+<tr>
+<td class="C1" style="text-align: right;">61</td>
+<td class="C1" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC1">
+<span class="C1">#&nbsp;endif</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="C1" style="text-align: right;">62</td>
+<td class="C1" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC1">
+<span class="C1">#&nbsp;if&nbsp;defin</span>
+<span class="C1">ed(OPENSSL</span>
+<span class="C1">_NO_KRB5)&nbsp;</span>
+<span class="C1">&amp;&amp;&nbsp;!define</span>
+<span class="C1">d(NO_KRB5)</span>
+<span class="C1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="C1" style="text-align: right;">63</td>
+<td class="C1" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC1">
+<span class="C1">#&nbsp;&nbsp;define&nbsp;</span>
+<span class="C1">NO_KRB5</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">64</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#&nbsp;endif</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">65</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#&nbsp;endif</span>
+</td>
+</tr>
+<tr>
+<td class="C1" style="text-align: right;">65</td>
+<td class="C1" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC1">
+<span class="C1">#&nbsp;if&nbsp;defin</span>
+<span class="C1">ed(OPENSSL</span>
+<span class="C1">_NO_MD2)&nbsp;&amp;</span>
+<span class="C1">&amp;&nbsp;!defined</span>
+<span class="C1">(NO_MD2)</span>
+</td>
+<td>&nbsp;</td>
+<td class="C2" style="text-align: right;">66</td>
+<td class="C2" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC2">
+<span class="C2">#&nbsp;if&nbsp;defin</span>
+<span class="C2">ed(OPENSSL</span>
+<span class="C2">_NO_IDEA)&nbsp;</span>
+<span class="C2">&amp;&amp;&nbsp;!define</span>
+<span class="C2">d(NO_IDEA)</span>
+<span class="C2" />
+</td>
+</tr>
+<tr>
+<td class="C1" style="text-align: right;">66</td>
+<td class="C1" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC1">
+<span class="C1">#&nbsp;&nbsp;define&nbsp;</span>
+<span class="C1">NO_MD2</span>
+</td>
+<td>&nbsp;</td>
+<td class="C2" style="text-align: right;">67</td>
+<td class="C2" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC2">
+<span class="C2">#&nbsp;&nbsp;define&nbsp;</span>
+<span class="C2">NO_IDEA</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">67</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#&nbsp;endif</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">68</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#&nbsp;endif</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">68</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#&nbsp;if&nbsp;defin</span>
+<span class="U1">ed(OPENSSL</span>
+<span class="U1">_NO_RC5)&nbsp;&amp;</span>
+<span class="U1">&amp;&nbsp;!defined</span>
+<span class="U1">(NO_RC5)</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">69</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#&nbsp;if&nbsp;defin</span>
+<span class="U2">ed(OPENSSL</span>
+<span class="U2">_NO_RC5)&nbsp;&amp;</span>
+<span class="U2">&amp;&nbsp;!defined</span>
+<span class="U2">(NO_RC5)</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">69</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#&nbsp;&nbsp;define&nbsp;</span>
+<span class="U1">NO_RC5</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">70</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#&nbsp;&nbsp;define&nbsp;</span>
+<span class="U2">NO_RC5</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">70</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#&nbsp;endif</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">71</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#&nbsp;endif</span>
+</td>
+</tr>
+<tr>
+<td class="C1" style="text-align: right;">71</td>
+<td class="C1" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC1">
+<span class="C1">#&nbsp;if&nbsp;defin</span>
+<span class="C1">ed(OPENSSL</span>
+<span class="C1">_NO_RFC377</span>
+<span class="C1">9)&nbsp;&amp;&amp;&nbsp;!def</span>
+<span class="C1">ined(NO_RF</span>
+<span class="C1">C3779)</span>
+</td>
+<td>&nbsp;</td>
+<td class="C2" style="text-align: right;">72</td>
+<td class="C2" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC2">
+<span class="C2">#&nbsp;if&nbsp;defin</span>
+<span class="C2">ed(OPENSSL</span>
+<span class="C2">_NO_KRB5)&nbsp;</span>
+<span class="C2">&amp;&amp;&nbsp;!define</span>
+<span class="C2">d(NO_KRB5)</span>
+<span class="C2" />
+</td>
+</tr>
+<tr>
+<td class="C1" style="text-align: right;">72</td>
+<td class="C1" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC1">
+<span class="C1">#&nbsp;&nbsp;define&nbsp;</span>
+<span class="C1">NO_RFC3779</span>
+<span class="C1" />
+</td>
+<td>&nbsp;</td>
+<td class="C2" style="text-align: right;">73</td>
+<td class="C2" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC2">
+<span class="C2">#&nbsp;&nbsp;define&nbsp;</span>
+<span class="C2">NO_KRB5</span>
+</td>
+</tr>
+<tr>
+<td class="C1" style="text-align: right;">73</td>
+<td class="C1" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC1">
+<span class="C1">#&nbsp;endif</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="C1" style="text-align: right;">74</td>
+<td class="C1" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC1">
+<span class="C1">#&nbsp;if&nbsp;defin</span>
+<span class="C1">ed(OPENSSL</span>
+<span class="C1">_NO_SCTP)&nbsp;</span>
+<span class="C1">&amp;&amp;&nbsp;!define</span>
+<span class="C1">d(NO_SCTP)</span>
+<span class="C1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="C1" style="text-align: right;">75</td>
+<td class="C1" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC1">
+<span class="C1">#&nbsp;&nbsp;define&nbsp;</span>
+<span class="C1">NO_SCTP</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">76</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#&nbsp;endif</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">74</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#&nbsp;endif</span>
+</td>
+</tr>
+<tr>
+<td class="C1" style="text-align: right;">77</td>
+<td class="C1" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC1">
+<span class="C1">#&nbsp;if&nbsp;defin</span>
+<span class="C1">ed(OPENSSL</span>
+<span class="C1">_NO_STORE)</span>
+<span class="C1">&nbsp;&amp;&amp;&nbsp;!defin</span>
+<span class="C1">ed(NO_STOR</span>
+<span class="C1">E)</span>
+</td>
+<td>&nbsp;</td>
+<td class="C2" style="text-align: right;">75</td>
+<td class="C2" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC2">
+<span class="C2">#&nbsp;if&nbsp;defin</span>
+<span class="C2">ed(OPENSSL</span>
+<span class="C2">_NO_MDC2)&nbsp;</span>
+<span class="C2">&amp;&amp;&nbsp;!define</span>
+<span class="C2">d(NO_MDC2)</span>
+<span class="C2" />
+</td>
+</tr>
+<tr>
+<td class="C1" style="text-align: right;">78</td>
+<td class="C1" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC1">
+<span class="C1">#&nbsp;&nbsp;define&nbsp;</span>
+<span class="C1">NO_STORE</span>
+</td>
+<td>&nbsp;</td>
+<td class="C2" style="text-align: right;">76</td>
+<td class="C2" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC2">
+<span class="C2">#&nbsp;&nbsp;define&nbsp;</span>
+<span class="C2">NO_MDC2</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">79</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#&nbsp;endif</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">77</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#&nbsp;endif</span>
+</td>
+</tr>
+<tr>
+<td class="C1" style="text-align: right;">80</td>
+<td class="C1" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC1">
+<span class="C1">#&nbsp;if&nbsp;defin</span>
+<span class="C1">ed(OPENSSL</span>
+<span class="C1">_NO_UNIT_T</span>
+<span class="C1">EST)&nbsp;&amp;&amp;&nbsp;!d</span>
+<span class="C1">efined(NO_</span>
+<span class="C1">UNIT_TEST)</span>
+<span class="C1" />
+</td>
+<td>&nbsp;</td>
+<td class="C2" style="text-align: right;">78</td>
+<td class="C2" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC2">
+<span class="C2">#&nbsp;if&nbsp;defin</span>
+<span class="C2">ed(OPENSSL</span>
+<span class="C2">_NO_RC5)&nbsp;&amp;</span>
+<span class="C2">&amp;&nbsp;!defined</span>
+<span class="C2">(NO_RC5)</span>
+</td>
+</tr>
+<tr>
+<td class="C1" style="text-align: right;">81</td>
+<td class="C1" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC1">
+<span class="C1">#&nbsp;&nbsp;define&nbsp;</span>
+<span class="C1">NO_UNIT_TE</span>
+<span class="C1">ST</span>
+</td>
+<td>&nbsp;</td>
+<td class="C2" style="text-align: right;">79</td>
+<td class="C2" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC2">
+<span class="C2">#&nbsp;&nbsp;define&nbsp;</span>
+<span class="C2">NO_RC5</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">82</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#&nbsp;endif</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">80</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#&nbsp;endif</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">83</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#endif</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">81</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#endif</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">84</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1" />
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">82</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2" />
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">85</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">/*&nbsp;crypto/</span>
+<span class="U1">opensslcon</span>
+<span class="U1">f.h.in&nbsp;*/</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">83</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">/*&nbsp;crypto/</span>
+<span class="U2">opensslcon</span>
+<span class="U2">f.h.in&nbsp;*/</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">86</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1" />
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">84</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2" />
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">87</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">/*&nbsp;Generat</span>
+<span class="U1">e&nbsp;80386&nbsp;co</span>
+<span class="U1">de?&nbsp;*/</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">85</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">/*&nbsp;Generat</span>
+<span class="U2">e&nbsp;80386&nbsp;co</span>
+<span class="U2">de?&nbsp;*/</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">88</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#undef&nbsp;I38</span>
+<span class="U1">6_ONLY</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">86</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#undef&nbsp;I38</span>
+<span class="U2">6_ONLY</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">89</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1" />
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">87</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2" />
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">90</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#if&nbsp;!(defi</span>
+<span class="U1">ned(VMS)&nbsp;|</span>
+<span class="U1">|&nbsp;defined(</span>
+<span class="U1">__VMS))&nbsp;/*</span>
+<span class="U1">&nbsp;VMS&nbsp;uses&nbsp;</span>
+<span class="U1">logical&nbsp;na</span>
+<span class="U1">mes&nbsp;instea</span>
+<span class="U1">d&nbsp;*/</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">88</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#if&nbsp;!(defi</span>
+<span class="U2">ned(VMS)&nbsp;|</span>
+<span class="U2">|&nbsp;defined(</span>
+<span class="U2">__VMS))&nbsp;/*</span>
+<span class="U2">&nbsp;VMS&nbsp;uses&nbsp;</span>
+<span class="U2">logical&nbsp;na</span>
+<span class="U2">mes&nbsp;instea</span>
+<span class="U2">d&nbsp;*/</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">91</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#if&nbsp;define</span>
+<span class="U1">d(HEADER_C</span>
+<span class="U1">RYPTLIB_H)</span>
+<span class="U1">&nbsp;&amp;&amp;&nbsp;!defin</span>
+<span class="U1">ed(OPENSSL</span>
+<span class="U1">DIR)</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">89</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#if&nbsp;define</span>
+<span class="U2">d(HEADER_C</span>
+<span class="U2">RYPTLIB_H)</span>
+<span class="U2">&nbsp;&amp;&amp;&nbsp;!defin</span>
+<span class="U2">ed(OPENSSL</span>
+<span class="U2">DIR)</span>
+</td>
+</tr>
+<tr>
+<td class="C1" style="text-align: right;">92</td>
+<td class="C1" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC1">
+<span class="C1">#define&nbsp;EN</span>
+<span class="C1">GINESDIR&nbsp;"</span>
+<span class="C1">/usr/local</span>
+<span class="C1">/ssl/lib/e</span>
+<span class="C1">ngines"</span>
+</td>
+<td>&nbsp;</td>
+<td class="C2" style="text-align: right;">90</td>
+<td class="C2" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC2">
+<span class="C2">#define&nbsp;EN</span>
+<span class="C2">GINESDIR&nbsp;"</span>
+<span class="C2">./"</span>
+</td>
+</tr>
+<tr>
+<td class="C1" style="text-align: right;">93</td>
+<td class="C1" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC1">
+<span class="C1">#define&nbsp;OP</span>
+<span class="C1">ENSSLDIR&nbsp;"</span>
+<span class="C1">/usr/local</span>
+<span class="C1">/ssl"</span>
+</td>
+<td>&nbsp;</td>
+<td class="C2" style="text-align: right;">91</td>
+<td class="C2" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC2">
+<span class="C2">#define&nbsp;OP</span>
+<span class="C2">ENSSLDIR&nbsp;"</span>
+<span class="C2">./"</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">94</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#endif</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">92</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#endif</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">95</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#endif</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">93</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#endif</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">96</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1" />
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">94</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2" />
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">97</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#undef&nbsp;OPE</span>
+<span class="U1">NSSL_UNIST</span>
+<span class="U1">D</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">95</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#undef&nbsp;OPE</span>
+<span class="U2">NSSL_UNIST</span>
+<span class="U2">D</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">98</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#define&nbsp;OP</span>
+<span class="U1">ENSSL_UNIS</span>
+<span class="U1">TD&nbsp;&lt;unistd</span>
+<span class="U1">.h&gt;</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">96</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#define&nbsp;OP</span>
+<span class="U2">ENSSL_UNIS</span>
+<span class="U2">TD&nbsp;&lt;unistd</span>
+<span class="U2">.h&gt;</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">99</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1" />
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">97</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2" />
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">100</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#undef&nbsp;OPE</span>
+<span class="U1">NSSL_EXPOR</span>
+<span class="U1">T_VAR_AS_F</span>
+<span class="U1">UNCTION</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">98</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#undef&nbsp;OPE</span>
+<span class="U2">NSSL_EXPOR</span>
+<span class="U2">T_VAR_AS_F</span>
+<span class="U2">UNCTION</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">101</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1" />
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">99</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2" />
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">102</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#if&nbsp;define</span>
+<span class="U1">d(HEADER_I</span>
+<span class="U1">DEA_H)&nbsp;&amp;&amp;&nbsp;</span>
+<span class="U1">!defined(I</span>
+<span class="U1">DEA_INT)</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">100</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#if&nbsp;define</span>
+<span class="U2">d(HEADER_I</span>
+<span class="U2">DEA_H)&nbsp;&amp;&amp;&nbsp;</span>
+<span class="U2">!defined(I</span>
+<span class="U2">DEA_INT)</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">103</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#define&nbsp;ID</span>
+<span class="U1">EA_INT&nbsp;uns</span>
+<span class="U1">igned&nbsp;int</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">101</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#define&nbsp;ID</span>
+<span class="U2">EA_INT&nbsp;uns</span>
+<span class="U2">igned&nbsp;int</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">104</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#endif</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">102</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#endif</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">105</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1" />
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">103</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2" />
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">106</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#if&nbsp;define</span>
+<span class="U1">d(HEADER_M</span>
+<span class="U1">D2_H)&nbsp;&amp;&amp;&nbsp;!</span>
+<span class="U1">defined(MD</span>
+<span class="U1">2_INT)</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">104</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#if&nbsp;define</span>
+<span class="U2">d(HEADER_M</span>
+<span class="U2">D2_H)&nbsp;&amp;&amp;&nbsp;!</span>
+<span class="U2">defined(MD</span>
+<span class="U2">2_INT)</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">107</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#define&nbsp;MD</span>
+<span class="U1">2_INT&nbsp;unsi</span>
+<span class="U1">gned&nbsp;int</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">105</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#define&nbsp;MD</span>
+<span class="U2">2_INT&nbsp;unsi</span>
+<span class="U2">gned&nbsp;int</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">108</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#endif</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">106</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#endif</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">109</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1" />
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">107</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2" />
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">110</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#if&nbsp;define</span>
+<span class="U1">d(HEADER_R</span>
+<span class="U1">C2_H)&nbsp;&amp;&amp;&nbsp;!</span>
+<span class="U1">defined(RC</span>
+<span class="U1">2_INT)</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">108</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#if&nbsp;define</span>
+<span class="U2">d(HEADER_R</span>
+<span class="U2">C2_H)&nbsp;&amp;&amp;&nbsp;!</span>
+<span class="U2">defined(RC</span>
+<span class="U2">2_INT)</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">111</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">/*&nbsp;I&nbsp;need&nbsp;</span>
+<span class="U1">to&nbsp;put&nbsp;in&nbsp;</span>
+<span class="U1">a&nbsp;mod&nbsp;for&nbsp;</span>
+<span class="U1">the&nbsp;alpha&nbsp;</span>
+<span class="U1">-&nbsp;eay&nbsp;*/</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">109</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">/*&nbsp;I&nbsp;need&nbsp;</span>
+<span class="U2">to&nbsp;put&nbsp;in&nbsp;</span>
+<span class="U2">a&nbsp;mod&nbsp;for&nbsp;</span>
+<span class="U2">the&nbsp;alpha&nbsp;</span>
+<span class="U2">-&nbsp;eay&nbsp;*/</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">112</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#define&nbsp;RC</span>
+<span class="U1">2_INT&nbsp;unsi</span>
+<span class="U1">gned&nbsp;int</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">110</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#define&nbsp;RC</span>
+<span class="U2">2_INT&nbsp;unsi</span>
+<span class="U2">gned&nbsp;int</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">113</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#endif</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">111</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#endif</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">114</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1" />
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">112</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2" />
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">115</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#if&nbsp;define</span>
+<span class="U1">d(HEADER_R</span>
+<span class="U1">C4_H)</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">113</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#if&nbsp;define</span>
+<span class="U2">d(HEADER_R</span>
+<span class="U2">C4_H)</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">116</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#if&nbsp;!defin</span>
+<span class="U1">ed(RC4_INT</span>
+<span class="U1">)</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">114</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#if&nbsp;!defin</span>
+<span class="U2">ed(RC4_INT</span>
+<span class="U2">)</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">117</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">/*&nbsp;using&nbsp;i</span>
+<span class="U1">nt&nbsp;types&nbsp;m</span>
+<span class="U1">ake&nbsp;the&nbsp;st</span>
+<span class="U1">ructure&nbsp;la</span>
+<span class="U1">rger&nbsp;but&nbsp;m</span>
+<span class="U1">ake&nbsp;the&nbsp;co</span>
+<span class="U1">de&nbsp;faster</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">115</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">/*&nbsp;using&nbsp;i</span>
+<span class="U2">nt&nbsp;types&nbsp;m</span>
+<span class="U2">ake&nbsp;the&nbsp;st</span>
+<span class="U2">ructure&nbsp;la</span>
+<span class="U2">rger&nbsp;but&nbsp;m</span>
+<span class="U2">ake&nbsp;the&nbsp;co</span>
+<span class="U2">de&nbsp;faster</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">118</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;*&nbsp;on&nbsp;most</span>
+<span class="U1">&nbsp;boxes&nbsp;I&nbsp;h</span>
+<span class="U1">ave&nbsp;tested</span>
+<span class="U1">&nbsp;-&nbsp;up&nbsp;to&nbsp;%</span>
+<span class="U1">20&nbsp;faster.</span>
+<span class="U1">&nbsp;*/</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">116</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;*&nbsp;on&nbsp;most</span>
+<span class="U2">&nbsp;boxes&nbsp;I&nbsp;h</span>
+<span class="U2">ave&nbsp;tested</span>
+<span class="U2">&nbsp;-&nbsp;up&nbsp;to&nbsp;%</span>
+<span class="U2">20&nbsp;faster.</span>
+<span class="U2">&nbsp;*/</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">119</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">/*</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">117</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">/*</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">120</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;*&nbsp;I&nbsp;don't</span>
+<span class="U1">&nbsp;know&nbsp;what</span>
+<span class="U1">&nbsp;does&nbsp;"mos</span>
+<span class="U1">t"&nbsp;mean,&nbsp;b</span>
+<span class="U1">ut&nbsp;declari</span>
+<span class="U1">ng&nbsp;"int"&nbsp;i</span>
+<span class="U1">s&nbsp;a&nbsp;must&nbsp;o</span>
+<span class="U1">n:</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">118</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;*&nbsp;I&nbsp;don't</span>
+<span class="U2">&nbsp;know&nbsp;what</span>
+<span class="U2">&nbsp;does&nbsp;"mos</span>
+<span class="U2">t"&nbsp;mean,&nbsp;b</span>
+<span class="U2">ut&nbsp;declari</span>
+<span class="U2">ng&nbsp;"int"&nbsp;i</span>
+<span class="U2">s&nbsp;a&nbsp;must&nbsp;o</span>
+<span class="U2">n:</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">121</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;*&nbsp;-&nbsp;Intel</span>
+<span class="U1">&nbsp;P6&nbsp;becaus</span>
+<span class="U1">e&nbsp;partial&nbsp;</span>
+<span class="U1">register&nbsp;s</span>
+<span class="U1">talls&nbsp;are&nbsp;</span>
+<span class="U1">very&nbsp;expen</span>
+<span class="U1">sive;</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">119</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;*&nbsp;-&nbsp;Intel</span>
+<span class="U2">&nbsp;P6&nbsp;becaus</span>
+<span class="U2">e&nbsp;partial&nbsp;</span>
+<span class="U2">register&nbsp;s</span>
+<span class="U2">talls&nbsp;are&nbsp;</span>
+<span class="U2">very&nbsp;expen</span>
+<span class="U2">sive;</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">122</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;*&nbsp;-&nbsp;elder</span>
+<span class="U1">&nbsp;Alpha&nbsp;bec</span>
+<span class="U1">ause&nbsp;it&nbsp;la</span>
+<span class="U1">cks&nbsp;byte&nbsp;l</span>
+<span class="U1">oad/store&nbsp;</span>
+<span class="U1">instructio</span>
+<span class="U1">ns;</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">120</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;*&nbsp;-&nbsp;elder</span>
+<span class="U2">&nbsp;Alpha&nbsp;bec</span>
+<span class="U2">ause&nbsp;it&nbsp;la</span>
+<span class="U2">cks&nbsp;byte&nbsp;l</span>
+<span class="U2">oad/store&nbsp;</span>
+<span class="U2">instructio</span>
+<span class="U2">ns;</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">123</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;*/</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">121</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;*/</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">124</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#define&nbsp;RC</span>
+<span class="U1">4_INT&nbsp;unsi</span>
+<span class="U1">gned&nbsp;int</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">122</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#define&nbsp;RC</span>
+<span class="U2">4_INT&nbsp;unsi</span>
+<span class="U2">gned&nbsp;int</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">125</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#endif</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">123</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#endif</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">126</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#if&nbsp;!defin</span>
+<span class="U1">ed(RC4_CHU</span>
+<span class="U1">NK)</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">124</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#if&nbsp;!defin</span>
+<span class="U2">ed(RC4_CHU</span>
+<span class="U2">NK)</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">127</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">/*</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">125</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">/*</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">128</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;*&nbsp;This&nbsp;en</span>
+<span class="U1">ables&nbsp;code</span>
+<span class="U1">&nbsp;handling&nbsp;</span>
+<span class="U1">data&nbsp;align</span>
+<span class="U1">ed&nbsp;at&nbsp;natu</span>
+<span class="U1">ral&nbsp;CPU&nbsp;wo</span>
+<span class="U1">rd</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">126</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;*&nbsp;This&nbsp;en</span>
+<span class="U2">ables&nbsp;code</span>
+<span class="U2">&nbsp;handling&nbsp;</span>
+<span class="U2">data&nbsp;align</span>
+<span class="U2">ed&nbsp;at&nbsp;natu</span>
+<span class="U2">ral&nbsp;CPU&nbsp;wo</span>
+<span class="U2">rd</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">129</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;*&nbsp;boundar</span>
+<span class="U1">y.&nbsp;See&nbsp;cry</span>
+<span class="U1">pto/rc4/rc</span>
+<span class="U1">4_enc.c&nbsp;fo</span>
+<span class="U1">r&nbsp;further&nbsp;</span>
+<span class="U1">details.</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">127</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;*&nbsp;boundar</span>
+<span class="U2">y.&nbsp;See&nbsp;cry</span>
+<span class="U2">pto/rc4/rc</span>
+<span class="U2">4_enc.c&nbsp;fo</span>
+<span class="U2">r&nbsp;further&nbsp;</span>
+<span class="U2">details.</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">130</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;*/</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">128</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;*/</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">131</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#undef&nbsp;RC4</span>
+<span class="U1">_CHUNK</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">129</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#undef&nbsp;RC4</span>
+<span class="U2">_CHUNK</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">132</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#endif</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">130</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#endif</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">133</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#endif</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">131</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#endif</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">134</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1" />
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">132</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2" />
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">135</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#if&nbsp;(defin</span>
+<span class="U1">ed(HEADER_</span>
+<span class="U1">NEW_DES_H)</span>
+<span class="U1">&nbsp;||&nbsp;define</span>
+<span class="U1">d(HEADER_D</span>
+<span class="U1">ES_H))&nbsp;&amp;&amp;&nbsp;</span>
+<span class="U1">!defined(D</span>
+<span class="U1">ES_LONG)</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">133</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#if&nbsp;(defin</span>
+<span class="U2">ed(HEADER_</span>
+<span class="U2">NEW_DES_H)</span>
+<span class="U2">&nbsp;||&nbsp;define</span>
+<span class="U2">d(HEADER_D</span>
+<span class="U2">ES_H))&nbsp;&amp;&amp;&nbsp;</span>
+<span class="U2">!defined(D</span>
+<span class="U2">ES_LONG)</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">136</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">/*&nbsp;If&nbsp;this</span>
+<span class="U1">&nbsp;is&nbsp;set&nbsp;to</span>
+<span class="U1">&nbsp;'unsigned</span>
+<span class="U1">&nbsp;int'&nbsp;on&nbsp;a</span>
+<span class="U1">&nbsp;DEC&nbsp;Alpha</span>
+<span class="U1">,&nbsp;this&nbsp;giv</span>
+<span class="U1">es&nbsp;about&nbsp;a</span>
+<span class="U1" />
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">134</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">/*&nbsp;If&nbsp;this</span>
+<span class="U2">&nbsp;is&nbsp;set&nbsp;to</span>
+<span class="U2">&nbsp;'unsigned</span>
+<span class="U2">&nbsp;int'&nbsp;on&nbsp;a</span>
+<span class="U2">&nbsp;DEC&nbsp;Alpha</span>
+<span class="U2">,&nbsp;this&nbsp;giv</span>
+<span class="U2">es&nbsp;about&nbsp;a</span>
+<span class="U2" />
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">137</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;*&nbsp;%20&nbsp;spe</span>
+<span class="U1">ed&nbsp;up&nbsp;(lon</span>
+<span class="U1">gs&nbsp;are&nbsp;8&nbsp;b</span>
+<span class="U1">ytes,&nbsp;int'</span>
+<span class="U1">s&nbsp;are&nbsp;4).&nbsp;</span>
+<span class="U1">*/</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">135</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;*&nbsp;%20&nbsp;spe</span>
+<span class="U2">ed&nbsp;up&nbsp;(lon</span>
+<span class="U2">gs&nbsp;are&nbsp;8&nbsp;b</span>
+<span class="U2">ytes,&nbsp;int'</span>
+<span class="U2">s&nbsp;are&nbsp;4).&nbsp;</span>
+<span class="U2">*/</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">138</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#ifndef&nbsp;DE</span>
+<span class="U1">S_LONG</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">136</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#ifndef&nbsp;DE</span>
+<span class="U2">S_LONG</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">139</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#define&nbsp;DE</span>
+<span class="U1">S_LONG&nbsp;uns</span>
+<span class="U1">igned&nbsp;long</span>
+<span class="U1" />
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">137</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#define&nbsp;DE</span>
+<span class="U2">S_LONG&nbsp;uns</span>
+<span class="U2">igned&nbsp;long</span>
+<span class="U2" />
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">140</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#endif</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">138</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#endif</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">141</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#endif</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">139</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#endif</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">142</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1" />
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">140</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2" />
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">143</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#if&nbsp;define</span>
+<span class="U1">d(HEADER_B</span>
+<span class="U1">N_H)&nbsp;&amp;&amp;&nbsp;!d</span>
+<span class="U1">efined(CON</span>
+<span class="U1">FIG_HEADER</span>
+<span class="U1">_BN_H)</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">141</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#if&nbsp;define</span>
+<span class="U2">d(HEADER_B</span>
+<span class="U2">N_H)&nbsp;&amp;&amp;&nbsp;!d</span>
+<span class="U2">efined(CON</span>
+<span class="U2">FIG_HEADER</span>
+<span class="U2">_BN_H)</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">144</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#define&nbsp;CO</span>
+<span class="U1">NFIG_HEADE</span>
+<span class="U1">R_BN_H</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">142</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#define&nbsp;CO</span>
+<span class="U2">NFIG_HEADE</span>
+<span class="U2">R_BN_H</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">145</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#undef&nbsp;BN_</span>
+<span class="U1">LLONG</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">143</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#undef&nbsp;BN_</span>
+<span class="U2">LLONG</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">146</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1" />
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">144</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2" />
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">147</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">/*&nbsp;Should&nbsp;</span>
+<span class="U1">we&nbsp;define&nbsp;</span>
+<span class="U1">BN_DIV2W&nbsp;h</span>
+<span class="U1">ere?&nbsp;*/</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">145</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">/*&nbsp;Should&nbsp;</span>
+<span class="U2">we&nbsp;define&nbsp;</span>
+<span class="U2">BN_DIV2W&nbsp;h</span>
+<span class="U2">ere?&nbsp;*/</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">148</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1" />
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">146</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2" />
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">149</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">/*&nbsp;Only&nbsp;on</span>
+<span class="U1">e&nbsp;for&nbsp;the&nbsp;</span>
+<span class="U1">following&nbsp;</span>
+<span class="U1">should&nbsp;be&nbsp;</span>
+<span class="U1">defined&nbsp;*/</span>
+<span class="U1" />
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">147</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">/*&nbsp;Only&nbsp;on</span>
+<span class="U2">e&nbsp;for&nbsp;the&nbsp;</span>
+<span class="U2">following&nbsp;</span>
+<span class="U2">should&nbsp;be&nbsp;</span>
+<span class="U2">defined&nbsp;*/</span>
+<span class="U2" />
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">148</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">/*&nbsp;The&nbsp;pri</span>
+<span class="I2">me&nbsp;number&nbsp;</span>
+<span class="I2">generation</span>
+<span class="I2">&nbsp;stuff&nbsp;may</span>
+<span class="I2">&nbsp;not&nbsp;work&nbsp;</span>
+<span class="I2">when</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">149</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;EIGHT_B</span>
+<span class="I2">IT&nbsp;but&nbsp;I&nbsp;d</span>
+<span class="I2">on't&nbsp;care&nbsp;</span>
+<span class="I2">since&nbsp;I've</span>
+<span class="I2">&nbsp;only&nbsp;used</span>
+<span class="I2">&nbsp;this&nbsp;mode</span>
+<span class="I2" />
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">150</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;for&nbsp;deb</span>
+<span class="I2">uging&nbsp;the&nbsp;</span>
+<span class="I2">bignum&nbsp;lib</span>
+<span class="I2">raries&nbsp;*/</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">150</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#undef&nbsp;SIX</span>
+<span class="U1">TY_FOUR_BI</span>
+<span class="U1">T_LONG</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">151</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#undef&nbsp;SIX</span>
+<span class="U2">TY_FOUR_BI</span>
+<span class="U2">T_LONG</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">151</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#undef&nbsp;SIX</span>
+<span class="U1">TY_FOUR_BI</span>
+<span class="U1">T</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">152</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#undef&nbsp;SIX</span>
+<span class="U2">TY_FOUR_BI</span>
+<span class="U2">T</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">152</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#define&nbsp;TH</span>
+<span class="U1">IRTY_TWO_B</span>
+<span class="U1">IT</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">153</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#define&nbsp;TH</span>
+<span class="U2">IRTY_TWO_B</span>
+<span class="U2">IT</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">154</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">#undef&nbsp;SIX</span>
+<span class="I2">TEEN_BIT</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">155</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">#undef&nbsp;EIG</span>
+<span class="I2">HT_BIT</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">153</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#endif</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">156</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#endif</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">154</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1" />
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">157</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2" />
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">155</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#if&nbsp;define</span>
+<span class="U1">d(HEADER_R</span>
+<span class="U1">C4_LOCL_H)</span>
+<span class="U1">&nbsp;&amp;&amp;&nbsp;!defin</span>
+<span class="U1">ed(CONFIG_</span>
+<span class="U1">HEADER_RC4</span>
+<span class="U1">_LOCL_H)</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">158</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#if&nbsp;define</span>
+<span class="U2">d(HEADER_R</span>
+<span class="U2">C4_LOCL_H)</span>
+<span class="U2">&nbsp;&amp;&amp;&nbsp;!defin</span>
+<span class="U2">ed(CONFIG_</span>
+<span class="U2">HEADER_RC4</span>
+<span class="U2">_LOCL_H)</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">156</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#define&nbsp;CO</span>
+<span class="U1">NFIG_HEADE</span>
+<span class="U1">R_RC4_LOCL</span>
+<span class="U1">_H</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">159</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#define&nbsp;CO</span>
+<span class="U2">NFIG_HEADE</span>
+<span class="U2">R_RC4_LOCL</span>
+<span class="U2">_H</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">157</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">/*&nbsp;if&nbsp;this</span>
+<span class="U1">&nbsp;is&nbsp;define</span>
+<span class="U1">d&nbsp;data[i]&nbsp;</span>
+<span class="U1">is&nbsp;used&nbsp;in</span>
+<span class="U1">stead&nbsp;of&nbsp;*</span>
+<span class="U1">data,&nbsp;this</span>
+<span class="U1">&nbsp;is&nbsp;a&nbsp;%20</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">160</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">/*&nbsp;if&nbsp;this</span>
+<span class="U2">&nbsp;is&nbsp;define</span>
+<span class="U2">d&nbsp;data[i]&nbsp;</span>
+<span class="U2">is&nbsp;used&nbsp;in</span>
+<span class="U2">stead&nbsp;of&nbsp;*</span>
+<span class="U2">data,&nbsp;this</span>
+<span class="U2">&nbsp;is&nbsp;a&nbsp;%20</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">158</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;*&nbsp;speedup</span>
+<span class="U1">&nbsp;on&nbsp;x86&nbsp;*/</span>
+<span class="U1" />
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">161</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;*&nbsp;speedup</span>
+<span class="U2">&nbsp;on&nbsp;x86&nbsp;*/</span>
+<span class="U2" />
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">159</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#undef&nbsp;RC4</span>
+<span class="U1">_INDEX</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">162</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#undef&nbsp;RC4</span>
+<span class="U2">_INDEX</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">160</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#endif</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">163</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#endif</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">161</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1" />
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">164</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2" />
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">162</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#if&nbsp;define</span>
+<span class="U1">d(HEADER_B</span>
+<span class="U1">F_LOCL_H)&nbsp;</span>
+<span class="U1">&amp;&amp;&nbsp;!define</span>
+<span class="U1">d(CONFIG_H</span>
+<span class="U1">EADER_BF_L</span>
+<span class="U1">OCL_H)</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">165</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#if&nbsp;define</span>
+<span class="U2">d(HEADER_B</span>
+<span class="U2">F_LOCL_H)&nbsp;</span>
+<span class="U2">&amp;&amp;&nbsp;!define</span>
+<span class="U2">d(CONFIG_H</span>
+<span class="U2">EADER_BF_L</span>
+<span class="U2">OCL_H)</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">163</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#define&nbsp;CO</span>
+<span class="U1">NFIG_HEADE</span>
+<span class="U1">R_BF_LOCL_</span>
+<span class="U1">H</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">166</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#define&nbsp;CO</span>
+<span class="U2">NFIG_HEADE</span>
+<span class="U2">R_BF_LOCL_</span>
+<span class="U2">H</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">164</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#undef&nbsp;BF_</span>
+<span class="U1">PTR</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">167</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#undef&nbsp;BF_</span>
+<span class="U2">PTR</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">165</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#endif&nbsp;/*&nbsp;</span>
+<span class="U1">HEADER_BF_</span>
+<span class="U1">LOCL_H&nbsp;*/</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">168</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#endif&nbsp;/*&nbsp;</span>
+<span class="U2">HEADER_BF_</span>
+<span class="U2">LOCL_H&nbsp;*/</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">166</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1" />
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">169</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2" />
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">167</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#if&nbsp;define</span>
+<span class="U1">d(HEADER_D</span>
+<span class="U1">ES_LOCL_H)</span>
+<span class="U1">&nbsp;&amp;&amp;&nbsp;!defin</span>
+<span class="U1">ed(CONFIG_</span>
+<span class="U1">HEADER_DES</span>
+<span class="U1">_LOCL_H)</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">170</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#if&nbsp;define</span>
+<span class="U2">d(HEADER_D</span>
+<span class="U2">ES_LOCL_H)</span>
+<span class="U2">&nbsp;&amp;&amp;&nbsp;!defin</span>
+<span class="U2">ed(CONFIG_</span>
+<span class="U2">HEADER_DES</span>
+<span class="U2">_LOCL_H)</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">168</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#define&nbsp;CO</span>
+<span class="U1">NFIG_HEADE</span>
+<span class="U1">R_DES_LOCL</span>
+<span class="U1">_H</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">171</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#define&nbsp;CO</span>
+<span class="U2">NFIG_HEADE</span>
+<span class="U2">R_DES_LOCL</span>
+<span class="U2">_H</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">169</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#ifndef&nbsp;DE</span>
+<span class="U1">S_DEFAULT_</span>
+<span class="U1">OPTIONS</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">172</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#ifndef&nbsp;DE</span>
+<span class="U2">S_DEFAULT_</span>
+<span class="U2">OPTIONS</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">170</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">/*&nbsp;the&nbsp;fol</span>
+<span class="U1">lowing&nbsp;is&nbsp;</span>
+<span class="U1">tweaked&nbsp;fr</span>
+<span class="U1">om&nbsp;a&nbsp;confi</span>
+<span class="U1">g&nbsp;script,&nbsp;</span>
+<span class="U1">that&nbsp;is&nbsp;wh</span>
+<span class="U1">y&nbsp;it&nbsp;is&nbsp;a</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">173</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">/*&nbsp;the&nbsp;fol</span>
+<span class="U2">lowing&nbsp;is&nbsp;</span>
+<span class="U2">tweaked&nbsp;fr</span>
+<span class="U2">om&nbsp;a&nbsp;confi</span>
+<span class="U2">g&nbsp;script,&nbsp;</span>
+<span class="U2">that&nbsp;is&nbsp;wh</span>
+<span class="U2">y&nbsp;it&nbsp;is&nbsp;a</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">171</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;*&nbsp;protect</span>
+<span class="U1">ed&nbsp;undef/d</span>
+<span class="U1">efine&nbsp;*/</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">174</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;*&nbsp;protect</span>
+<span class="U2">ed&nbsp;undef/d</span>
+<span class="U2">efine&nbsp;*/</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">172</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#ifndef&nbsp;DE</span>
+<span class="U1">S_PTR</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">175</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#ifndef&nbsp;DE</span>
+<span class="U2">S_PTR</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">173</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#undef&nbsp;DES</span>
+<span class="U1">_PTR</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">176</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#undef&nbsp;DES</span>
+<span class="U2">_PTR</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">174</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#endif</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">177</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#endif</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">175</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1" />
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">178</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2" />
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">176</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">/*&nbsp;This&nbsp;he</span>
+<span class="U1">lps&nbsp;C&nbsp;comp</span>
+<span class="U1">iler&nbsp;gener</span>
+<span class="U1">ate&nbsp;the&nbsp;co</span>
+<span class="U1">rrect&nbsp;code</span>
+<span class="U1">&nbsp;for&nbsp;multi</span>
+<span class="U1">ple&nbsp;functi</span>
+<span class="U1">onal</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">179</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">/*&nbsp;This&nbsp;he</span>
+<span class="U2">lps&nbsp;C&nbsp;comp</span>
+<span class="U2">iler&nbsp;gener</span>
+<span class="U2">ate&nbsp;the&nbsp;co</span>
+<span class="U2">rrect&nbsp;code</span>
+<span class="U2">&nbsp;for&nbsp;multi</span>
+<span class="U2">ple&nbsp;functi</span>
+<span class="U2">onal</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">177</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;*&nbsp;units.&nbsp;</span>
+<span class="U1">&nbsp;It&nbsp;reduce</span>
+<span class="U1">s&nbsp;register</span>
+<span class="U1">&nbsp;dependanc</span>
+<span class="U1">ies&nbsp;at&nbsp;the</span>
+<span class="U1">&nbsp;expense&nbsp;o</span>
+<span class="U1">f&nbsp;2&nbsp;more</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">180</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;*&nbsp;units.&nbsp;</span>
+<span class="U2">&nbsp;It&nbsp;reduce</span>
+<span class="U2">s&nbsp;register</span>
+<span class="U2">&nbsp;dependanc</span>
+<span class="U2">ies&nbsp;at&nbsp;the</span>
+<span class="U2">&nbsp;expense&nbsp;o</span>
+<span class="U2">f&nbsp;2&nbsp;more</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">178</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;*&nbsp;registe</span>
+<span class="U1">rs&nbsp;*/</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">181</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;*&nbsp;registe</span>
+<span class="U2">rs&nbsp;*/</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">179</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#ifndef&nbsp;DE</span>
+<span class="U1">S_RISC1</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">182</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#ifndef&nbsp;DE</span>
+<span class="U2">S_RISC1</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">180</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#undef&nbsp;DES</span>
+<span class="U1">_RISC1</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">183</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#undef&nbsp;DES</span>
+<span class="U2">_RISC1</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">181</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#endif</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">184</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#endif</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">182</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1" />
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">185</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2" />
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">183</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#ifndef&nbsp;DE</span>
+<span class="U1">S_RISC2</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">186</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#ifndef&nbsp;DE</span>
+<span class="U2">S_RISC2</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">184</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#undef&nbsp;DES</span>
+<span class="U1">_RISC2</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">187</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#undef&nbsp;DES</span>
+<span class="U2">_RISC2</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">185</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#endif</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">188</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#endif</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">186</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1" />
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">189</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2" />
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">187</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#if&nbsp;define</span>
+<span class="U1">d(DES_RISC</span>
+<span class="U1">1)&nbsp;&amp;&amp;&nbsp;defi</span>
+<span class="U1">ned(DES_RI</span>
+<span class="U1">SC2)</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">190</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#if&nbsp;define</span>
+<span class="U2">d(DES_RISC</span>
+<span class="U2">1)&nbsp;&amp;&amp;&nbsp;defi</span>
+<span class="U2">ned(DES_RI</span>
+<span class="U2">SC2)</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">188</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">YOU&nbsp;SHOULD</span>
+<span class="U1">&nbsp;NOT&nbsp;HAVE&nbsp;</span>
+<span class="U1">BOTH&nbsp;DES_R</span>
+<span class="U1">ISC1&nbsp;AND&nbsp;D</span>
+<span class="U1">ES_RISC2&nbsp;D</span>
+<span class="U1">EFINED!!!!</span>
+<span class="U1">!</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">191</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">YOU&nbsp;SHOULD</span>
+<span class="U2">&nbsp;NOT&nbsp;HAVE&nbsp;</span>
+<span class="U2">BOTH&nbsp;DES_R</span>
+<span class="U2">ISC1&nbsp;AND&nbsp;D</span>
+<span class="U2">ES_RISC2&nbsp;D</span>
+<span class="U2">EFINED!!!!</span>
+<span class="U2">!</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">189</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#endif</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">192</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#endif</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">190</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1" />
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">193</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2" />
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">191</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">/*&nbsp;Unroll&nbsp;</span>
+<span class="U1">the&nbsp;inner&nbsp;</span>
+<span class="U1">loop,&nbsp;this</span>
+<span class="U1">&nbsp;sometimes</span>
+<span class="U1">&nbsp;helps,&nbsp;so</span>
+<span class="U1">metimes&nbsp;hi</span>
+<span class="U1">nders.</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">194</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">/*&nbsp;Unroll&nbsp;</span>
+<span class="U2">the&nbsp;inner&nbsp;</span>
+<span class="U2">loop,&nbsp;this</span>
+<span class="U2">&nbsp;sometimes</span>
+<span class="U2">&nbsp;helps,&nbsp;so</span>
+<span class="U2">metimes&nbsp;hi</span>
+<span class="U2">nders.</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">192</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;*&nbsp;Very&nbsp;mu</span>
+<span class="U1">cy&nbsp;CPU&nbsp;dep</span>
+<span class="U1">endant&nbsp;*/</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">195</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;*&nbsp;Very&nbsp;mu</span>
+<span class="U2">cy&nbsp;CPU&nbsp;dep</span>
+<span class="U2">endant&nbsp;*/</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">193</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#ifndef&nbsp;DE</span>
+<span class="U1">S_UNROLL</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">196</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#ifndef&nbsp;DE</span>
+<span class="U2">S_UNROLL</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">194</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#undef&nbsp;DES</span>
+<span class="U1">_UNROLL</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">197</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#undef&nbsp;DES</span>
+<span class="U2">_UNROLL</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">195</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#endif</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">198</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#endif</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">196</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1" />
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">199</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2" />
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">197</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">/*&nbsp;These&nbsp;d</span>
+<span class="U1">efault&nbsp;val</span>
+<span class="U1">ues&nbsp;were&nbsp;s</span>
+<span class="U1">upplied&nbsp;by</span>
+<span class="U1" />
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">200</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">/*&nbsp;These&nbsp;d</span>
+<span class="U2">efault&nbsp;val</span>
+<span class="U2">ues&nbsp;were&nbsp;s</span>
+<span class="U2">upplied&nbsp;by</span>
+<span class="U2" />
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">198</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;*&nbsp;Peter&nbsp;G</span>
+<span class="U1">utman&nbsp;&lt;pgu</span>
+<span class="U1">t001@cs.au</span>
+<span class="U1">ckland.ac.</span>
+<span class="U1">nz&gt;</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">201</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;*&nbsp;Peter&nbsp;G</span>
+<span class="U2">utman&nbsp;&lt;pgu</span>
+<span class="U2">t001@cs.au</span>
+<span class="U2">ckland.ac.</span>
+<span class="U2">nz&gt;</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">199</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;*&nbsp;They&nbsp;ar</span>
+<span class="U1">e&nbsp;only&nbsp;use</span>
+<span class="U1">d&nbsp;if&nbsp;nothi</span>
+<span class="U1">ng&nbsp;else&nbsp;ha</span>
+<span class="U1">s&nbsp;been&nbsp;def</span>
+<span class="U1">ined&nbsp;*/</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">202</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;*&nbsp;They&nbsp;ar</span>
+<span class="U2">e&nbsp;only&nbsp;use</span>
+<span class="U2">d&nbsp;if&nbsp;nothi</span>
+<span class="U2">ng&nbsp;else&nbsp;ha</span>
+<span class="U2">s&nbsp;been&nbsp;def</span>
+<span class="U2">ined&nbsp;*/</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">200</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#if&nbsp;!defin</span>
+<span class="U1">ed(DES_PTR</span>
+<span class="U1">)&nbsp;&amp;&amp;&nbsp;!defi</span>
+<span class="U1">ned(DES_RI</span>
+<span class="U1">SC1)&nbsp;&amp;&amp;&nbsp;!d</span>
+<span class="U1">efined(DES</span>
+<span class="U1">_RISC2)&nbsp;&amp;&amp;</span>
+<span class="U1">&nbsp;!defined(</span>
+<span class="U1">DES_UNROLL</span>
+<span class="U1">)</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">203</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#if&nbsp;!defin</span>
+<span class="U2">ed(DES_PTR</span>
+<span class="U2">)&nbsp;&amp;&amp;&nbsp;!defi</span>
+<span class="U2">ned(DES_RI</span>
+<span class="U2">SC1)&nbsp;&amp;&amp;&nbsp;!d</span>
+<span class="U2">efined(DES</span>
+<span class="U2">_RISC2)&nbsp;&amp;&amp;</span>
+<span class="U2">&nbsp;!defined(</span>
+<span class="U2">DES_UNROLL</span>
+<span class="U2">)</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">201</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">/*&nbsp;Special</span>
+<span class="U1">&nbsp;defines&nbsp;w</span>
+<span class="U1">hich&nbsp;chang</span>
+<span class="U1">e&nbsp;the&nbsp;way&nbsp;</span>
+<span class="U1">the&nbsp;code&nbsp;i</span>
+<span class="U1">s&nbsp;built&nbsp;de</span>
+<span class="U1">pending&nbsp;on</span>
+<span class="U1">&nbsp;the</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">204</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">/*&nbsp;Special</span>
+<span class="U2">&nbsp;defines&nbsp;w</span>
+<span class="U2">hich&nbsp;chang</span>
+<span class="U2">e&nbsp;the&nbsp;way&nbsp;</span>
+<span class="U2">the&nbsp;code&nbsp;i</span>
+<span class="U2">s&nbsp;built&nbsp;de</span>
+<span class="U2">pending&nbsp;on</span>
+<span class="U2">&nbsp;the</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">202</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;&nbsp;&nbsp;CPU&nbsp;and</span>
+<span class="U1">&nbsp;OS.&nbsp;&nbsp;For&nbsp;</span>
+<span class="U1">SGI&nbsp;machin</span>
+<span class="U1">es&nbsp;you&nbsp;can</span>
+<span class="U1">&nbsp;use&nbsp;_MIPS</span>
+<span class="U1">_SZLONG&nbsp;(3</span>
+<span class="U1">2&nbsp;or&nbsp;64)&nbsp;t</span>
+<span class="U1">o&nbsp;find</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">205</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;&nbsp;&nbsp;CPU&nbsp;and</span>
+<span class="U2">&nbsp;OS.&nbsp;&nbsp;For&nbsp;</span>
+<span class="U2">SGI&nbsp;machin</span>
+<span class="U2">es&nbsp;you&nbsp;can</span>
+<span class="U2">&nbsp;use&nbsp;_MIPS</span>
+<span class="U2">_SZLONG&nbsp;(3</span>
+<span class="U2">2&nbsp;or&nbsp;64)&nbsp;t</span>
+<span class="U2">o&nbsp;find</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">203</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;&nbsp;&nbsp;even&nbsp;ne</span>
+<span class="U1">wer&nbsp;MIPS&nbsp;C</span>
+<span class="U1">PU's,&nbsp;but&nbsp;</span>
+<span class="U1">at&nbsp;the&nbsp;mom</span>
+<span class="U1">ent&nbsp;one&nbsp;si</span>
+<span class="U1">ze&nbsp;fits&nbsp;al</span>
+<span class="U1">l&nbsp;for</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">206</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;&nbsp;&nbsp;even&nbsp;ne</span>
+<span class="U2">wer&nbsp;MIPS&nbsp;C</span>
+<span class="U2">PU's,&nbsp;but&nbsp;</span>
+<span class="U2">at&nbsp;the&nbsp;mom</span>
+<span class="U2">ent&nbsp;one&nbsp;si</span>
+<span class="U2">ze&nbsp;fits&nbsp;al</span>
+<span class="U2">l&nbsp;for</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">204</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;&nbsp;&nbsp;optimiz</span>
+<span class="U1">ation&nbsp;opti</span>
+<span class="U1">ons.&nbsp;&nbsp;Olde</span>
+<span class="U1">r&nbsp;Sparc's&nbsp;</span>
+<span class="U1">work&nbsp;bette</span>
+<span class="U1">r&nbsp;with&nbsp;onl</span>
+<span class="U1">y&nbsp;UNROLL,&nbsp;</span>
+<span class="U1">but</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">207</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;&nbsp;&nbsp;optimiz</span>
+<span class="U2">ation&nbsp;opti</span>
+<span class="U2">ons.&nbsp;&nbsp;Olde</span>
+<span class="U2">r&nbsp;Sparc's&nbsp;</span>
+<span class="U2">work&nbsp;bette</span>
+<span class="U2">r&nbsp;with&nbsp;onl</span>
+<span class="U2">y&nbsp;UNROLL,&nbsp;</span>
+<span class="U2">but</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">205</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;&nbsp;&nbsp;there's</span>
+<span class="U1">&nbsp;no&nbsp;way&nbsp;to</span>
+<span class="U1">&nbsp;tell&nbsp;at&nbsp;c</span>
+<span class="U1">ompile&nbsp;tim</span>
+<span class="U1">e&nbsp;what&nbsp;it&nbsp;</span>
+<span class="U1">is&nbsp;you're&nbsp;</span>
+<span class="U1">running&nbsp;on</span>
+<span class="U1">&nbsp;*/</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">208</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;&nbsp;&nbsp;there's</span>
+<span class="U2">&nbsp;no&nbsp;way&nbsp;to</span>
+<span class="U2">&nbsp;tell&nbsp;at&nbsp;c</span>
+<span class="U2">ompile&nbsp;tim</span>
+<span class="U2">e&nbsp;what&nbsp;it&nbsp;</span>
+<span class="U2">is&nbsp;you're&nbsp;</span>
+<span class="U2">running&nbsp;on</span>
+<span class="U2">&nbsp;*/</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">206</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">209</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">207</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#if&nbsp;define</span>
+<span class="U1">d(&nbsp;sun&nbsp;)&nbsp;&nbsp;</span>
+<span class="U1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="U1">&nbsp;&nbsp;/*&nbsp;Newer</span>
+<span class="U1">&nbsp;Sparc's&nbsp;*</span>
+<span class="U1">/</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">210</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#if&nbsp;define</span>
+<span class="U2">d(&nbsp;sun&nbsp;)&nbsp;&nbsp;</span>
+<span class="U2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="U2">&nbsp;&nbsp;/*&nbsp;Newer</span>
+<span class="U2">&nbsp;Sparc's&nbsp;*</span>
+<span class="U2">/</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">208</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#&nbsp;&nbsp;define&nbsp;</span>
+<span class="U1">DES_PTR</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">211</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#&nbsp;&nbsp;define&nbsp;</span>
+<span class="U2">DES_PTR</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">209</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#&nbsp;&nbsp;define&nbsp;</span>
+<span class="U1">DES_RISC1</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">212</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#&nbsp;&nbsp;define&nbsp;</span>
+<span class="U2">DES_RISC1</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">210</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#&nbsp;&nbsp;define&nbsp;</span>
+<span class="U1">DES_UNROLL</span>
+<span class="U1" />
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">213</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#&nbsp;&nbsp;define&nbsp;</span>
+<span class="U2">DES_UNROLL</span>
+<span class="U2" />
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">211</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#elif&nbsp;defi</span>
+<span class="U1">ned(&nbsp;__ult</span>
+<span class="U1">rix&nbsp;)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="U1">&nbsp;&nbsp;/*&nbsp;Older</span>
+<span class="U1">&nbsp;MIPS&nbsp;*/</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">214</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#elif&nbsp;defi</span>
+<span class="U2">ned(&nbsp;__ult</span>
+<span class="U2">rix&nbsp;)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="U2">&nbsp;&nbsp;/*&nbsp;Older</span>
+<span class="U2">&nbsp;MIPS&nbsp;*/</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">212</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#&nbsp;&nbsp;define&nbsp;</span>
+<span class="U1">DES_PTR</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">215</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#&nbsp;&nbsp;define&nbsp;</span>
+<span class="U2">DES_PTR</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">213</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#&nbsp;&nbsp;define&nbsp;</span>
+<span class="U1">DES_RISC2</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">216</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#&nbsp;&nbsp;define&nbsp;</span>
+<span class="U2">DES_RISC2</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">214</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#&nbsp;&nbsp;define&nbsp;</span>
+<span class="U1">DES_UNROLL</span>
+<span class="U1" />
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">217</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#&nbsp;&nbsp;define&nbsp;</span>
+<span class="U2">DES_UNROLL</span>
+<span class="U2" />
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">215</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#elif&nbsp;defi</span>
+<span class="U1">ned(&nbsp;__osf</span>
+<span class="U1">1__&nbsp;)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="U1">&nbsp;&nbsp;/*&nbsp;Alpha</span>
+<span class="U1">&nbsp;*/</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">218</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#elif&nbsp;defi</span>
+<span class="U2">ned(&nbsp;__osf</span>
+<span class="U2">1__&nbsp;)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="U2">&nbsp;&nbsp;/*&nbsp;Alpha</span>
+<span class="U2">&nbsp;*/</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">216</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#&nbsp;&nbsp;define&nbsp;</span>
+<span class="U1">DES_PTR</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">219</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#&nbsp;&nbsp;define&nbsp;</span>
+<span class="U2">DES_PTR</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">217</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#&nbsp;&nbsp;define&nbsp;</span>
+<span class="U1">DES_RISC2</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">220</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#&nbsp;&nbsp;define&nbsp;</span>
+<span class="U2">DES_RISC2</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">218</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#elif&nbsp;defi</span>
+<span class="U1">ned&nbsp;(&nbsp;_AIX</span>
+<span class="U1">&nbsp;)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="U1">&nbsp;&nbsp;/*&nbsp;RS600</span>
+<span class="U1">0&nbsp;*/</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">221</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#elif&nbsp;defi</span>
+<span class="U2">ned&nbsp;(&nbsp;_AIX</span>
+<span class="U2">&nbsp;)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="U2">&nbsp;&nbsp;/*&nbsp;RS600</span>
+<span class="U2">0&nbsp;*/</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">219</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;&nbsp;/*&nbsp;Unkno</span>
+<span class="U1">wn&nbsp;*/</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">222</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;&nbsp;/*&nbsp;Unkno</span>
+<span class="U2">wn&nbsp;*/</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">220</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#elif&nbsp;defi</span>
+<span class="U1">ned(&nbsp;__hpu</span>
+<span class="U1">x&nbsp;)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="U1">&nbsp;&nbsp;/*&nbsp;HP-PA</span>
+<span class="U1">&nbsp;*/</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">223</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#elif&nbsp;defi</span>
+<span class="U2">ned(&nbsp;__hpu</span>
+<span class="U2">x&nbsp;)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="U2">&nbsp;&nbsp;/*&nbsp;HP-PA</span>
+<span class="U2">&nbsp;*/</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">221</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;&nbsp;/*&nbsp;Unkno</span>
+<span class="U1">wn&nbsp;*/</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">224</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;&nbsp;/*&nbsp;Unkno</span>
+<span class="U2">wn&nbsp;*/</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">222</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#elif&nbsp;defi</span>
+<span class="U1">ned(&nbsp;__aux</span>
+<span class="U1">&nbsp;)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="U1">&nbsp;&nbsp;/*&nbsp;68K&nbsp;*</span>
+<span class="U1">/</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">225</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#elif&nbsp;defi</span>
+<span class="U2">ned(&nbsp;__aux</span>
+<span class="U2">&nbsp;)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="U2">&nbsp;&nbsp;/*&nbsp;68K&nbsp;*</span>
+<span class="U2">/</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">223</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;&nbsp;/*&nbsp;Unkno</span>
+<span class="U1">wn&nbsp;*/</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">226</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;&nbsp;/*&nbsp;Unkno</span>
+<span class="U2">wn&nbsp;*/</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">224</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#elif&nbsp;defi</span>
+<span class="U1">ned(&nbsp;__dgu</span>
+<span class="U1">x&nbsp;)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="U1">&nbsp;&nbsp;/*&nbsp;88K&nbsp;(</span>
+<span class="U1">but&nbsp;P6&nbsp;in&nbsp;</span>
+<span class="U1">latest&nbsp;box</span>
+<span class="U1">es)&nbsp;*/</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">227</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#elif&nbsp;defi</span>
+<span class="U2">ned(&nbsp;__dgu</span>
+<span class="U2">x&nbsp;)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="U2">&nbsp;&nbsp;/*&nbsp;88K&nbsp;(</span>
+<span class="U2">but&nbsp;P6&nbsp;in&nbsp;</span>
+<span class="U2">latest&nbsp;box</span>
+<span class="U2">es)&nbsp;*/</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">225</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#&nbsp;&nbsp;define&nbsp;</span>
+<span class="U1">DES_UNROLL</span>
+<span class="U1" />
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">228</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#&nbsp;&nbsp;define&nbsp;</span>
+<span class="U2">DES_UNROLL</span>
+<span class="U2" />
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">226</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#elif&nbsp;defi</span>
+<span class="U1">ned(&nbsp;__sgi</span>
+<span class="U1">&nbsp;)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="U1">&nbsp;&nbsp;/*&nbsp;Newer</span>
+<span class="U1">&nbsp;MIPS&nbsp;*/</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">229</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#elif&nbsp;defi</span>
+<span class="U2">ned(&nbsp;__sgi</span>
+<span class="U2">&nbsp;)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="U2">&nbsp;&nbsp;/*&nbsp;Newer</span>
+<span class="U2">&nbsp;MIPS&nbsp;*/</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">227</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#&nbsp;&nbsp;define&nbsp;</span>
+<span class="U1">DES_PTR</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">230</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#&nbsp;&nbsp;define&nbsp;</span>
+<span class="U2">DES_PTR</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">228</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#&nbsp;&nbsp;define&nbsp;</span>
+<span class="U1">DES_RISC2</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">231</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#&nbsp;&nbsp;define&nbsp;</span>
+<span class="U2">DES_RISC2</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">229</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#&nbsp;&nbsp;define&nbsp;</span>
+<span class="U1">DES_UNROLL</span>
+<span class="U1" />
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">232</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#&nbsp;&nbsp;define&nbsp;</span>
+<span class="U2">DES_UNROLL</span>
+<span class="U2" />
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">230</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#elif&nbsp;defi</span>
+<span class="U1">ned(i386)&nbsp;</span>
+<span class="U1">||&nbsp;defined</span>
+<span class="U1">(__i386__)</span>
+<span class="U1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*</span>
+<span class="U1">&nbsp;x86&nbsp;boxes</span>
+<span class="U1">,&nbsp;should&nbsp;b</span>
+<span class="U1">e&nbsp;gcc&nbsp;*/</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">233</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#elif&nbsp;defi</span>
+<span class="U2">ned(i386)&nbsp;</span>
+<span class="U2">||&nbsp;defined</span>
+<span class="U2">(__i386__)</span>
+<span class="U2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*</span>
+<span class="U2">&nbsp;x86&nbsp;boxes</span>
+<span class="U2">,&nbsp;should&nbsp;b</span>
+<span class="U2">e&nbsp;gcc&nbsp;*/</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">231</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#&nbsp;&nbsp;define&nbsp;</span>
+<span class="U1">DES_PTR</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">234</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#&nbsp;&nbsp;define&nbsp;</span>
+<span class="U2">DES_PTR</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">232</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#&nbsp;&nbsp;define&nbsp;</span>
+<span class="U1">DES_RISC1</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">235</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#&nbsp;&nbsp;define&nbsp;</span>
+<span class="U2">DES_RISC1</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">233</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#&nbsp;&nbsp;define&nbsp;</span>
+<span class="U1">DES_UNROLL</span>
+<span class="U1" />
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">236</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#&nbsp;&nbsp;define&nbsp;</span>
+<span class="U2">DES_UNROLL</span>
+<span class="U2" />
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">234</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#endif&nbsp;/*&nbsp;</span>
+<span class="U1">Systems-sp</span>
+<span class="U1">ecific&nbsp;spe</span>
+<span class="U1">ed&nbsp;defines</span>
+<span class="U1">&nbsp;*/</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">237</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#endif&nbsp;/*&nbsp;</span>
+<span class="U2">Systems-sp</span>
+<span class="U2">ecific&nbsp;spe</span>
+<span class="U2">ed&nbsp;defines</span>
+<span class="U2">&nbsp;*/</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">235</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#endif</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">238</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#endif</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">236</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1" />
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">239</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2" />
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">237</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#endif&nbsp;/*&nbsp;</span>
+<span class="U1">DES_DEFAUL</span>
+<span class="U1">T_OPTIONS&nbsp;</span>
+<span class="U1">*/</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">240</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#endif&nbsp;/*&nbsp;</span>
+<span class="U2">DES_DEFAUL</span>
+<span class="U2">T_OPTIONS&nbsp;</span>
+<span class="U2">*/</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">238</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#endif&nbsp;/*&nbsp;</span>
+<span class="U1">HEADER_DES</span>
+<span class="U1">_LOCL_H&nbsp;*/</span>
+<span class="U1" />
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">241</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#endif&nbsp;/*&nbsp;</span>
+<span class="U2">HEADER_DES</span>
+<span class="U2">_LOCL_H&nbsp;*/</span>
+<span class="U2" />
+</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">239</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">#ifdef&nbsp;&nbsp;__</span>
+<span class="R1">cplusplus</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">240</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">}</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">241</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">#endif</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+</table>
+<p class="copyright" style="margin-top: 25px; padding-top: 2px; border-top: solid #a0a0a0 1px; max-width: none;">Araxis Merge (but not the data content of this report) is Copyright  &copy; 1993-2009 Araxis Ltd (<a href="http://www.araxis.com/" title="Link to the Araxis corporate web site">www.araxis.com</a>). All rights reserved.</p>
+</body>
+</html>
