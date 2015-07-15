@@ -160,7 +160,7 @@ static int fd_write(BIO *b, const char *in, int inl)
 {
     int ret;
     clear_sys_error();
-    ret = UP_write(b->num, in, inl);
+    ret = UP_write(b->num, (char *)in, inl);
     BIO_clear_retry_flags(b);
     if (ret <= 0) {
         if (BIO_fd_should_retry(ret))

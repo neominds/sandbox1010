@@ -288,7 +288,7 @@ static void dgram_adjust_rcv_timeout(BIO *b)
 #  else
         sz.i = sizeof(data->socket_timeout);
         if (getsockopt(b->num, SOL_SOCKET, SO_RCVTIMEO,
-                       &(data->socket_timeout), (void *)&sz) < 0) {
+                      (void *)&(data->socket_timeout), (int *)&sz) < 0) {
             perror("getsockopt");
         } else if (sizeof(sz.s) != sizeof(sz.i) && sz.i == 0)
             OPENSSL_assert(sz.s <= sizeof(data->socket_timeout));
@@ -328,7 +328,7 @@ static void dgram_adjust_rcv_timeout(BIO *b)
                 perror("setsockopt");
             }
 #  else
-            if (setsockopt(b->num, SOL_SOCKET, SO_RCVTIMEO, &timeleft,
+            if (setsockopt(b->num, SOL_SOCKET, SO_RCVTIMEO, (void *)&timeleft,
                            sizeof(struct timeval)) < 0) {
                 perror("setsockopt");
             }
@@ -354,7 +354,7 @@ static void dgram_reset_rcv_timeout(BIO *b)
         }
 #  else
         if (setsockopt
-            (b->num, SOL_SOCKET, SO_RCVTIMEO, &(data->socket_timeout),
+            (b->num, SOL_SOCKET, SO_RCVTIMEO, (void *)&(data->socket_timeout),
              sizeof(struct timeval)) < 0) {
             perror("setsockopt");
         }
@@ -434,7 +434,7 @@ static int dgram_write(BIO *b, const char *in, int inl)
 # if defined(NETWARE_CLIB) && defined(NETWARE_BSDSOCK)
         ret = sendto(b->num, (char *)in, inl, 0, &data->peer.sa, peerlen);
 # else
-        ret = sendto(b->num, in, inl, 0, &data->peer.sa, peerlen);
+        ret = sendto(b->num, (char *)in, inl, 0, &data->peer.sa, peerlen);
 # endif
     }
 
