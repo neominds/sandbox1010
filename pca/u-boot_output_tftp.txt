@@ -1,0 +1,57 @@
+addr_fdt=0x8E800000
+addr_fs=0x82000000
+addr_kern=0x8F000000
+addr_mon=0x0c5f0000
+addr_uinitrd=-
+args_all=setenv bootargs console=ttyS0,115200n8 rootwait
+args_ramfs=setenv bootargs ${bootargs} earlyprintk rdinit=/sbin/init rw root=/dev/ram0 initrd=0x802000000,42M
+args_usb=setenv bootargs ${bootargs} rootfstype=ext4 root=/dev/sda2 rw
+baudrate=115200
+boot=ramfs
+bootargs=console=ttyS0,115200n8 rootwait=1 earlyprintk rdinit=/sbin/init rw root=/dev/ram0 initrd=0x802000000,42M
+bootcmd=run run_${mode} init_${boot} get_fdt_${mode} get_mon_${mode} get_kern_${mode} run_mon run_kern
+bootdelay=3
+bootfile=uImage
+ddr3a_size=4
+debug_options=1
+eth1addr=00:17:ea:f4:01:2b
+eth2addr=00:17:ea:f4:01:2c
+eth3addr=00:17:ea:f4:01:2d
+ethact=DEBUG
+ethaddr=00:17:ea:f4:01:2a
+fdt_high=0xffffffff
+get_fdt_tftp=tftpboot ${addr_fdt} ${name_fdt}
+get_fdt_usb=fatload usb 0:1 ${addr_fdt}   ${name_fdt}
+get_fs_tftp=tftpboot ${addr_fs} ${name_fs}
+get_fs_usb=ext4load usb 0:1 ${addr_fs}    ${name_fs}
+get_kern_tftp=tftpboot ${addr_kern} ${name_kern}
+get_kern_usb=fatload usb 0:1 ${addr_kern}  ${name_kern}
+get_mon_tftp=tftpboot ${addr_mon} ${name_mon}
+get_mon_usb=fatload usb 0:1 ${addr_mon}   ${name_mon}
+has_mdio=1
+init_ramfs=run set_fs_none args_all args_ramfs get_fs_${mode}
+init_usb=usb start; run set_fs_none args_all args_usb
+initrd_high=0xffffffff
+ipaddr=192.168.1.108
+mem_lpae=1
+mode=tftp
+name_fdt=k2hk-evm.dtb
+name_fs=arago-console-image-k2hk-evm.cpio.gz
+name_kern=uImage
+name_mon=skern-k2hk-evm.bin
+name_uboot=u-boot-spi-k2hk-evm.gph
+no_post=1
+run_kern=bootm ${addr_kern} ${addr_uinitrd} ${addr_fdt}
+run_mon=mon_install ${addr_mon}
+run_tftp=true
+run_usb=usb start
+serverip=192.168.1.103
+set_fs_none=setenv addr_uinitrd -
+stderr=serial
+stdin=serial
+stdout=serial
+tftp_root=ftp_pca
+ver=U-Boot 2013.01 (Jul 16 2014 - 12:00:24)
+
+Environment size: 1913/32764 bytes
+

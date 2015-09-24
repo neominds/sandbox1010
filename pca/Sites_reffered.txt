@@ -1,0 +1,5 @@
+Tool chain installation:----  http://processors.wiki.ti.com/index.php/MCSDK_UG_Chapter_Tools#Linaro_toolchain
+Linux image building:----   http://processors.wiki.ti.com/index.php/MCSDK_UG_Chapter_Exploring#Toolchain_Installation 
+u-boot settings:----- http://processors.wiki.ti.com/index.php/Modifying_U-boot
+other refferd sites:----- http://processors.wiki.ti.com/index.php/Linux_Kernel_Users_Guide
+relese notes:------ http://www.ti.com/tool/EVMK2H
