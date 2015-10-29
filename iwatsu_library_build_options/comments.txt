@@ -1,0 +1,39 @@
+C:\Documents and Settings\neominds\Desktop\library\merged>ccmips -Ic:\WindRiver\vxworks-6.2\target\h\ -Ic:\WindRiver\vxw
+orks-6.2\target\h\types -I. -I.. -I../include  -DOPENSSL_THREADS -D_REENTRANT -mrtp -EB -mips64 -mabi=o64 -O -G 0 -B/hos
+t//lib/gcc-lib/ -D_VSB_CONFIG_FILE=\"/target/lib/h/config/vsbConfig.h\" -DCPU=MIPS64 -msoft-float -mno-branch-likely -DT
+OOL_FAMILY=gnu -DTOOL=gnu -fno-builtin -fno-defer-pop -DNO_STRINGS_H -I/target/usr/h -I/target/h/wrn/coreip -DAES_ASM  -
+c -o sha512.o sha512.c
+
+procedure to build the library 
+
+In crypto\sha directory
+1.	In Ic:\WindRiver\vxworks-6.2\target\h\stdio.h comment out following
+//#define	BUFSIZE	BUFSIZ
+//extern int	fgetpos (FILE *, fpos_t *);
+//extern int	fsetpos (FILE *, const fpos_t *);
+2.	Build command line
+
+C:\Documents and Settings\neominds\Desktop\library\merged>ccmips -Ic:\WindRiver\vxworks-6.2\target\h\ -Ic:\WindRiver\vxworks-6.2\target\h\types -I. -I.. -I../include  -DOPENSSL_THREADS -D_REENTRANT -mrtp -EB -mips64 -mabi=o64 -O -G 0 -B/host//lib/gcc-lib/ -D_VSB_CONFIG_FILE=\"/target/lib/h/config/vsbConfig.h\" -DCPU=MIPS64 -msoft-float -mno-branch-likely -DTOOL_FAMILY=gnu -DTOOL=gnu -fno-builtin -fno-defer-pop -DNO_STRINGS_H -I/target/usr/h -I/target/h/wrn/coreip -DAES_ASM  -c -o sha512.o sha512.c
+
+for 32bit- change 64 to 32
+
+
+3.	Do above in sha directory for following files:
+a.	sha1.c
+b.	sha1dgst.c
+c.	sha1_one.c
+d.	sha.c
+e.	sha_dgst.c
+f.	sha_one.c
+g.	sha256.c
+h.	sha512.c
+
+In crypto\md5 directory
+
+4.	Build command line
+Same as sha
+5.	Compile following files
+a.	md5.c
+b.	md5_dgst.c
+c.	md5_one.c
+================================
