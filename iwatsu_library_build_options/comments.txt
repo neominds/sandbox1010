@@ -37,3 +37,8 @@ a.	md5.c
 b.	md5_dgst.c
 c.	md5_one.c
 ================================
+
+comands for checking headers
+
+> readelfmips -h *.o
+> nmmips *.o
